@@ -13,14 +13,16 @@ using System.Windows.Forms;
 
 namespace Spotify_Local_Tagger
 {
-    public partial class LoginForm : Form
+    public partial class GUI : Form
     {
 
-        private SpotifyWebAPI spotifyAPI;
+        User theUser;
 
-        public LoginForm()
+        public GUI()
         {
             InitializeComponent();
+            panel1.Visible = true;
+            panel2.Visible = false;
         }
 
         private void loginCredsButton_Click(object sender, EventArgs e)
@@ -31,25 +33,30 @@ namespace Spotify_Local_Tagger
         private async void loginWebButton_Click(object sender, EventArgs e)
         {
 
-            WebAPIFactory webApiFactory = new WebAPIFactory("http://localhost", 8888, "6ac9eb8c694441748f29683de12b50b7",SpotifyAPI.Web.Enums.Scope.UserReadPrivate, TimeSpan.FromSeconds(20));
 
-            try
-            {
-                spotifyAPI = await webApiFactory.GetWebApi();
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            theUser = new User(this);
 
-            if(spotifyAPI == null)
+            if(theUser.isConnexionOK())
             {
                 MessageBox.Show("Retrieving informations failed");
             }else
             {
                 Console.WriteLine("Successfull connexion");
-                //Console.WriteLine(spotifyAPI.GetUserPlaylists().Size);
+                panel1.Visible = false;
+                panel2.Visible = true;
+                panel2Init();
             }
 
+        }
+
+        public void showMessageBox(String theText)
+        {
+            MessageBox.Show(theText);
+        }
+
+        private void panel2Init()
+        {
+            theUser.setProfilePic(profilePictureBox);
         }
 
     }

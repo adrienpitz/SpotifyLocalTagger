@@ -16,7 +16,7 @@ namespace Spotify_Local_Tagger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new GUI());
         }
     }
 }
