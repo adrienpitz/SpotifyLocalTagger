@@ -18,15 +18,14 @@ namespace Spotify_Local_Tagger
         GUI theGui;
         PrivateProfile profile;
         List<SimplePlaylist> playlists;
-        bool areComponentsInitialized;
 
 
         public User(GUI gui)
         {
             theGui = gui;
             connect();
-            areComponentsInitialized = false;
             while(spotifyAPI == null) { }
+            initComponents();
 
         }
 
@@ -71,8 +70,6 @@ namespace Spotify_Local_Tagger
 
         public async void setProfilePic(PictureBox profilePicBox)
         {
-            if (!areComponentsInitialized)
-                initComponents();
 
             if(profile.Images != null && profile.Images.Count > 0)
             {
@@ -83,6 +80,84 @@ namespace Spotify_Local_Tagger
                         profilePicBox.Image = System.Drawing.Image.FromStream(stream);
                 }
             }
+        }
+
+        public String getName()
+        {
+            return profile.DisplayName;
+        }
+
+        public String getCountry()
+        {
+            return profile.Country;
+        }
+
+        public String getFollowers()
+        {
+            return profile.Followers.Total.ToString();
+        }
+
+        public int getNbPlaylists()
+        {
+            return playlists.Count;
+        }
+
+        public List<String> getPlaylistsAsStrings()
+        {
+            List<String> thePlaylists = new List<string>();
+
+            foreach(SimplePlaylist playlist in playlists)
+            {
+                thePlaylists.Add(playlist.Name);
+            }
+            
+            return thePlaylists;
+        }
+
+        public List<ListViewItem> getSongsOfPlaylistAsStrings(int playlistId)
+        {
+            List<ListViewItem> theSongs = new List<ListViewItem>();
+
+            SimplePlaylist thePlaylist = playlists.ElementAt(playlistId);
+
+            List<PlaylistTrack> trackSet = new List<PlaylistTrack>();
+
+            Paging<PlaylistTrack> tracks = spotifyAPI.GetPlaylistTracks(profile.Id, thePlaylist.Id);
+
+            //tracks.Items.ForEach(track => trackSet.Add(track));
+
+            if (tracks.Items != null)
+            {
+                int i = 100;
+
+                while (true)
+                {
+                    Paging<PlaylistTrack> temp = spotifyAPI.GetPlaylistTracks(profile.Id, thePlaylist.Id, "", 100, i);
+                    if (temp != null && temp.Items != null && temp.Items.Count > 0)
+                    {
+                        foreach (PlaylistTrack playTrack in temp.Items)
+                            tracks.Items.Add(playTrack);
+                        i += 100;
+                    }
+                    else
+                        break;
+                }
+
+                foreach (PlaylistTrack track in tracks.Items)
+                {
+                    if (track != null)
+                        trackSet.Add(track);
+                }
+            }
+
+            foreach(PlaylistTrack track in trackSet)
+            {
+                ListViewItem theItem = new ListViewItem(new string[] { track.Track.Name, track.Track.Artists[0].Name, track.Track.Album.Name });
+                theItem.ImageIndex = 0;
+                theSongs.Add(theItem);
+            }
+
+            return theSongs;
         }
     }
 }

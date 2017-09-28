@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.credentialsLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
@@ -40,11 +41,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.spotifyMusicGroupBox = new System.Windows.Forms.GroupBox();
+            this.spotifyMusicsListView = new System.Windows.Forms.ListView();
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Artist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.playlistsGroupBox = new System.Windows.Forms.GroupBox();
+            this.playlistsListBox = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.countryLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.followersLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.spotifyMusicGroupBox.SuspendLayout();
+            this.playlistsGroupBox.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).BeginInit();
             this.SuspendLayout();
@@ -165,6 +180,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.spotifyMusicGroupBox);
+            this.panel2.Controls.Add(this.playlistsGroupBox);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -172,21 +189,156 @@
             this.panel2.Size = new System.Drawing.Size(1122, 599);
             this.panel2.TabIndex = 10;
             // 
+            // spotifyMusicGroupBox
+            // 
+            this.spotifyMusicGroupBox.Controls.Add(this.spotifyMusicsListView);
+            this.spotifyMusicGroupBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.spotifyMusicGroupBox.Location = new System.Drawing.Point(213, 80);
+            this.spotifyMusicGroupBox.Name = "spotifyMusicGroupBox";
+            this.spotifyMusicGroupBox.Size = new System.Drawing.Size(277, 494);
+            this.spotifyMusicGroupBox.TabIndex = 11;
+            this.spotifyMusicGroupBox.TabStop = false;
+            this.spotifyMusicGroupBox.Text = "Spotify musics in xxx";
+            // 
+            // spotifyMusicsListView
+            // 
+            this.spotifyMusicsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.spotifyMusicsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Title,
+            this.Artist,
+            this.Album});
+            this.spotifyMusicsListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.spotifyMusicsListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 18);
+            this.spotifyMusicsListView.Name = "spotifyMusicsListView";
+            this.spotifyMusicsListView.Size = new System.Drawing.Size(277, 466);
+            this.spotifyMusicsListView.TabIndex = 0;
+            this.spotifyMusicsListView.TileSize = new System.Drawing.Size(270, 30);
+            this.spotifyMusicsListView.UseCompatibleStateImageBehavior = false;
+            this.spotifyMusicsListView.View = System.Windows.Forms.View.Tile;
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            // 
+            // Artist
+            // 
+            this.Artist.Text = "Artist";
+            // 
+            // Album
+            // 
+            this.Album.Text = "Album";
+            this.Album.Width = 64;
+            // 
+            // playlistsGroupBox
+            // 
+            this.playlistsGroupBox.Controls.Add(this.playlistsListBox);
+            this.playlistsGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.playlistsGroupBox.Location = new System.Drawing.Point(4, 80);
+            this.playlistsGroupBox.Name = "playlistsGroupBox";
+            this.playlistsGroupBox.Size = new System.Drawing.Size(203, 494);
+            this.playlistsGroupBox.TabIndex = 10;
+            this.playlistsGroupBox.TabStop = false;
+            this.playlistsGroupBox.Text = "Playlists";
+            // 
+            // playlistsListBox
+            // 
+            this.playlistsListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.playlistsListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playlistsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playlistsListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.playlistsListBox.FormattingEnabled = true;
+            this.playlistsListBox.HorizontalScrollbar = true;
+            this.playlistsListBox.ItemHeight = 16;
+            this.playlistsListBox.Items.AddRange(new object[] {
+            "Rock",
+            "Metal",
+            "Classique",
+            "Ariana Grande",
+            "Snoop Dogg Intégrale",
+            "Golden 60\'s",
+            "Rock n\' Roll",
+            "Ballades",
+            "Chanson Française"});
+            this.playlistsListBox.Location = new System.Drawing.Point(0, 18);
+            this.playlistsListBox.Name = "playlistsListBox";
+            this.playlistsListBox.Size = new System.Drawing.Size(203, 466);
+            this.playlistsListBox.TabIndex = 0;
+            this.playlistsListBox.SelectedIndexChanged += new System.EventHandler(this.playlistsListBox_SelectedIndexChanged);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel3.Controls.Add(this.countryLabel);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.followersLabel);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.nameLabel);
             this.panel3.Controls.Add(this.profilePictureBox);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(204, 59);
             this.panel3.TabIndex = 9;
             // 
+            // countryLabel
+            // 
+            this.countryLabel.AutoSize = true;
+            this.countryLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.countryLabel.Location = new System.Drawing.Point(124, 40);
+            this.countryLabel.Name = "countryLabel";
+            this.countryLabel.Size = new System.Drawing.Size(49, 13);
+            this.countryLabel.TabIndex = 5;
+            this.countryLabel.Text = "Yakoutie";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(60, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Country:";
+            // 
+            // followersLabel
+            // 
+            this.followersLabel.AutoSize = true;
+            this.followersLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.followersLabel.Location = new System.Drawing.Point(124, 26);
+            this.followersLabel.Name = "followersLabel";
+            this.followersLabel.Size = new System.Drawing.Size(25, 13);
+            this.followersLabel.TabIndex = 3;
+            this.followersLabel.Text = "999";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(60, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Followers: ";
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoEllipsis = true;
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.nameLabel.Location = new System.Drawing.Point(60, 10);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(59, 13);
+            this.nameLabel.TabIndex = 1;
+            this.nameLabel.Text = "John Smith";
+            // 
             // profilePictureBox
             // 
-            this.profilePictureBox.Location = new System.Drawing.Point(3, 0);
+            this.profilePictureBox.Location = new System.Drawing.Point(0, 0);
             this.profilePictureBox.Name = "profilePictureBox";
-            this.profilePictureBox.Size = new System.Drawing.Size(50, 59);
-            this.profilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePictureBox.Size = new System.Drawing.Size(53, 59);
+            this.profilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profilePictureBox.TabIndex = 0;
             this.profilePictureBox.TabStop = false;
             // 
@@ -209,7 +361,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.spotifyMusicGroupBox.ResumeLayout(false);
+            this.playlistsGroupBox.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -230,6 +385,18 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox profilePictureBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label followersLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label countryLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox playlistsGroupBox;
+        private System.Windows.Forms.ListBox playlistsListBox;
+        private System.Windows.Forms.GroupBox spotifyMusicGroupBox;
+        private System.Windows.Forms.ListView spotifyMusicsListView;
+        private System.Windows.Forms.ColumnHeader Title;
+        private System.Windows.Forms.ColumnHeader Artist;
+        private System.Windows.Forms.ColumnHeader Album;
     }
 }
 
