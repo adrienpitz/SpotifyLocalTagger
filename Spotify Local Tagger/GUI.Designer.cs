@@ -39,8 +39,8 @@
             this.logoImageBox = new System.Windows.Forms.PictureBox();
             this.loginLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.loginPanel = new System.Windows.Forms.Panel();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.spotifyMusicGroupBox = new System.Windows.Forms.GroupBox();
             this.spotifyMusicsListView = new System.Windows.Forms.ListView();
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -56,8 +56,8 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.loginPanel.SuspendLayout();
+            this.mainPanel.SuspendLayout();
             this.spotifyMusicGroupBox.SuspendLayout();
             this.playlistsGroupBox.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -159,35 +159,35 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Password";
             // 
-            // panel1
+            // loginPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.logoImageBox);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.credentialsLabel);
-            this.panel1.Controls.Add(this.loginLabel);
-            this.panel1.Controls.Add(this.loginTextBox);
-            this.panel1.Controls.Add(this.passwordTextBox);
-            this.panel1.Controls.Add(this.loginWebButton);
-            this.panel1.Controls.Add(this.webPageLabel);
-            this.panel1.Controls.Add(this.loginCredsButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1122, 599);
-            this.panel1.TabIndex = 9;
+            this.loginPanel.BackColor = System.Drawing.Color.Transparent;
+            this.loginPanel.Controls.Add(this.logoImageBox);
+            this.loginPanel.Controls.Add(this.label1);
+            this.loginPanel.Controls.Add(this.credentialsLabel);
+            this.loginPanel.Controls.Add(this.loginLabel);
+            this.loginPanel.Controls.Add(this.loginTextBox);
+            this.loginPanel.Controls.Add(this.passwordTextBox);
+            this.loginPanel.Controls.Add(this.loginWebButton);
+            this.loginPanel.Controls.Add(this.webPageLabel);
+            this.loginPanel.Controls.Add(this.loginCredsButton);
+            this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loginPanel.Location = new System.Drawing.Point(0, 0);
+            this.loginPanel.Name = "loginPanel";
+            this.loginPanel.Size = new System.Drawing.Size(1122, 599);
+            this.loginPanel.TabIndex = 9;
             // 
-            // panel2
+            // mainPanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.spotifyMusicGroupBox);
-            this.panel2.Controls.Add(this.playlistsGroupBox);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1122, 599);
-            this.panel2.TabIndex = 10;
+            this.mainPanel.BackColor = System.Drawing.Color.Transparent;
+            this.mainPanel.Controls.Add(this.spotifyMusicGroupBox);
+            this.mainPanel.Controls.Add(this.playlistsGroupBox);
+            this.mainPanel.Controls.Add(this.panel3);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1122, 599);
+            this.mainPanel.TabIndex = 10;
             // 
             // spotifyMusicGroupBox
             // 
@@ -350,17 +350,17 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1122, 599);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.loginPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Spotify Local Tagger";
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.loginPanel.ResumeLayout(false);
+            this.loginPanel.PerformLayout();
+            this.mainPanel.ResumeLayout(false);
             this.spotifyMusicGroupBox.ResumeLayout(false);
             this.playlistsGroupBox.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -381,8 +381,8 @@
         private System.Windows.Forms.PictureBox logoImageBox;
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel loginPanel;
+        private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox profilePictureBox;
         private System.Windows.Forms.Label nameLabel;

@@ -18,21 +18,38 @@ namespace Spotify_Local_Tagger
 
         User theUser;
 
+        /**
+         * Constructor
+         * 
+         **/
         public GUI()
         {
             InitializeComponent();
-            panel1.Visible = true;
-            panel2.Visible = false;
+            //At the begining, login panel is visible
+            loginPanel.Visible = true;
+            mainPanel.Visible = false;
         }
 
+        /**
+         * loginCredsButton_Click : Triggered when login button with credentials is pressed
+         * 
+         * sender: the object sending the signal
+         * e: arguments sended
+         * 
+         **/
         private void loginCredsButton_Click(object sender, EventArgs e)
         {
 
         }
 
+        /**
+         * loginWebButton_Click : Triggered when login button on web page is pressed
+         * 
+         * sender: the object sending the signal
+         * e: arguments sended
+         **/
         private void loginWebButton_Click(object sender, EventArgs e)
         {
-
 
             theUser = new User(this);
 
@@ -42,9 +59,9 @@ namespace Spotify_Local_Tagger
             }else
             {
                 Console.WriteLine("Successfull connexion");
-                panel1.Visible = false;
-                panel2.Visible = true;
-                panel2Init();
+                loginPanel.Visible = false;
+                mainPanel.Visible = true;
+                mainPanelInit();
             }
 
         }
@@ -54,7 +71,11 @@ namespace Spotify_Local_Tagger
             MessageBox.Show(theText);
         }
 
-        private void panel2Init()
+        /**
+         * mainPanelInit: Initializes the graphical components of the main menu
+         * 
+         **/
+        private void mainPanelInit()
         {
             theUser.setProfilePic(profilePictureBox);
             nameLabel.Text = theUser.getName();
@@ -65,6 +86,10 @@ namespace Spotify_Local_Tagger
             setSongsInBox();
         }
 
+        /**
+         * setPlaylistsInBox: Fill the playlist list box
+         * 
+         **/
         private void setPlaylistsInBox()
         {
             List<String> thePlaylists = theUser.getPlaylistsAsStrings();
@@ -80,6 +105,10 @@ namespace Spotify_Local_Tagger
                 playlistsListBox.SetSelected(0, true);
         }
 
+        /**
+         * setSongsInBox: Fill the songs list box (at initialization)
+         * 
+         **/
         private void setSongsInBox()
         {
             if(theUser.getNbPlaylists() > 0)
