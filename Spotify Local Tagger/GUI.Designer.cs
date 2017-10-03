@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("");
             this.credentialsLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
@@ -57,6 +57,8 @@
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView2 = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).BeginInit();
             this.loginPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -64,6 +66,8 @@
             this.playlistsGroupBox.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // credentialsLabel
@@ -176,7 +180,7 @@
             this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(1115, 599);
+            this.loginPanel.Size = new System.Drawing.Size(1121, 599);
             this.loginPanel.TabIndex = 9;
             // 
             // mainPanel
@@ -190,14 +194,14 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1115, 599);
+            this.mainPanel.Size = new System.Drawing.Size(1121, 599);
             this.mainPanel.TabIndex = 10;
             // 
             // spotifyMusicGroupBox
             // 
             this.spotifyMusicGroupBox.Controls.Add(this.spotifyMusicsListView);
             this.spotifyMusicGroupBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.spotifyMusicGroupBox.Location = new System.Drawing.Point(271, 80);
+            this.spotifyMusicGroupBox.Location = new System.Drawing.Point(275, 80);
             this.spotifyMusicGroupBox.Name = "spotifyMusicGroupBox";
             this.spotifyMusicGroupBox.Size = new System.Drawing.Size(277, 494);
             this.spotifyMusicGroupBox.TabIndex = 11;
@@ -213,7 +217,7 @@
             this.Album});
             this.spotifyMusicsListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.spotifyMusicsListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem8});
             this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 18);
             this.spotifyMusicsListView.Name = "spotifyMusicsListView";
             this.spotifyMusicsListView.Size = new System.Drawing.Size(277, 466);
@@ -348,23 +352,43 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.listView1);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(554, 80);
+            this.groupBox1.Location = new System.Drawing.Point(563, 80);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(287, 494);
+            this.groupBox1.Size = new System.Drawing.Size(277, 494);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Local musics in xxx";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.listView2);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Location = new System.Drawing.Point(845, 80);
+            this.groupBox2.Location = new System.Drawing.Point(846, 80);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(265, 494);
+            this.groupBox2.Size = new System.Drawing.Size(275, 494);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "File Explorer";
+            // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.listView1.Location = new System.Drawing.Point(0, 18);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(277, 466);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // listView2
+            // 
+            this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.listView2.Location = new System.Drawing.Point(0, 18);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(275, 466);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
             // 
             // GUI
             // 
@@ -373,7 +397,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1115, 599);
+            this.ClientSize = new System.Drawing.Size(1121, 599);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.loginPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -390,6 +414,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -423,6 +449,8 @@
         private System.Windows.Forms.ColumnHeader Album;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listView2;
     }
 }
 
