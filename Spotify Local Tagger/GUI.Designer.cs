@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.credentialsLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
@@ -41,6 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.spotifyMusicGroupBox = new System.Windows.Forms.GroupBox();
             this.spotifyMusicsListView = new System.Windows.Forms.ListView();
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,26 +57,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.playlistNotUserLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).BeginInit();
             this.loginPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.spotifyMusicGroupBox.SuspendLayout();
             this.playlistsGroupBox.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // credentialsLabel
             // 
             this.credentialsLabel.AutoSize = true;
             this.credentialsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.credentialsLabel.Location = new System.Drawing.Point(504, 205);
+            this.credentialsLabel.Location = new System.Drawing.Point(398, 218);
             this.credentialsLabel.Name = "credentialsLabel";
             this.credentialsLabel.Size = new System.Drawing.Size(109, 13);
             this.credentialsLabel.TabIndex = 0;
@@ -84,7 +82,7 @@
             // 
             this.loginTextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.loginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.loginTextBox.Location = new System.Drawing.Point(579, 230);
+            this.loginTextBox.Location = new System.Drawing.Point(473, 243);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(215, 20);
             this.loginTextBox.TabIndex = 1;
@@ -93,7 +91,7 @@
             // 
             this.passwordTextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.passwordTextBox.Location = new System.Drawing.Point(579, 266);
+            this.passwordTextBox.Location = new System.Drawing.Point(473, 279);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(215, 20);
@@ -103,7 +101,7 @@
             // 
             this.webPageLabel.AutoSize = true;
             this.webPageLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.webPageLabel.Location = new System.Drawing.Point(504, 339);
+            this.webPageLabel.Location = new System.Drawing.Point(398, 352);
             this.webPageLabel.Name = "webPageLabel";
             this.webPageLabel.Size = new System.Drawing.Size(133, 13);
             this.webPageLabel.TabIndex = 3;
@@ -113,7 +111,7 @@
             // 
             this.loginCredsButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.loginCredsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginCredsButton.Location = new System.Drawing.Point(579, 302);
+            this.loginCredsButton.Location = new System.Drawing.Point(473, 315);
             this.loginCredsButton.Name = "loginCredsButton";
             this.loginCredsButton.Size = new System.Drawing.Size(215, 23);
             this.loginCredsButton.TabIndex = 4;
@@ -125,7 +123,7 @@
             // 
             this.loginWebButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(242)))), ((int)(((byte)(156)))));
             this.loginWebButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginWebButton.Location = new System.Drawing.Point(579, 368);
+            this.loginWebButton.Location = new System.Drawing.Point(473, 381);
             this.loginWebButton.Name = "loginWebButton";
             this.loginWebButton.Size = new System.Drawing.Size(215, 23);
             this.loginWebButton.TabIndex = 5;
@@ -138,7 +136,7 @@
             this.logoImageBox.BackColor = System.Drawing.Color.Transparent;
             this.logoImageBox.Image = ((System.Drawing.Image)(resources.GetObject("logoImageBox.Image")));
             this.logoImageBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("logoImageBox.InitialImage")));
-            this.logoImageBox.Location = new System.Drawing.Point(324, 208);
+            this.logoImageBox.Location = new System.Drawing.Point(218, 221);
             this.logoImageBox.Name = "logoImageBox";
             this.logoImageBox.Size = new System.Drawing.Size(174, 183);
             this.logoImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -149,7 +147,7 @@
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.loginLabel.Location = new System.Drawing.Point(520, 230);
+            this.loginLabel.Location = new System.Drawing.Point(414, 243);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(33, 13);
             this.loginLabel.TabIndex = 7;
@@ -159,7 +157,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(520, 273);
+            this.label1.Location = new System.Drawing.Point(414, 286);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 8;
@@ -180,13 +178,12 @@
             this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(1121, 599);
+            this.loginPanel.Size = new System.Drawing.Size(910, 643);
             this.loginPanel.TabIndex = 9;
             // 
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.Transparent;
-            this.mainPanel.Controls.Add(this.groupBox2);
             this.mainPanel.Controls.Add(this.groupBox1);
             this.mainPanel.Controls.Add(this.spotifyMusicGroupBox);
             this.mainPanel.Controls.Add(this.playlistsGroupBox);
@@ -194,16 +191,37 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1121, 599);
+            this.mainPanel.Size = new System.Drawing.Size(910, 643);
             this.mainPanel.TabIndex = 10;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.listView1);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Location = new System.Drawing.Point(455, 254);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(450, 366);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Local musics in xxx";
+            // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.listView1.Location = new System.Drawing.Point(0, 30);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(459, 327);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // spotifyMusicGroupBox
             // 
+            this.spotifyMusicGroupBox.Controls.Add(this.playlistNotUserLabel);
             this.spotifyMusicGroupBox.Controls.Add(this.spotifyMusicsListView);
             this.spotifyMusicGroupBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.spotifyMusicGroupBox.Location = new System.Drawing.Point(275, 80);
+            this.spotifyMusicGroupBox.Location = new System.Drawing.Point(3, 254);
             this.spotifyMusicGroupBox.Name = "spotifyMusicGroupBox";
-            this.spotifyMusicGroupBox.Size = new System.Drawing.Size(277, 494);
+            this.spotifyMusicGroupBox.Size = new System.Drawing.Size(450, 366);
             this.spotifyMusicGroupBox.TabIndex = 11;
             this.spotifyMusicGroupBox.TabStop = false;
             this.spotifyMusicGroupBox.Text = "Spotify musics in xxx";
@@ -217,10 +235,10 @@
             this.Album});
             this.spotifyMusicsListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.spotifyMusicsListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem8});
-            this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 18);
+            listViewItem1});
+            this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 30);
             this.spotifyMusicsListView.Name = "spotifyMusicsListView";
-            this.spotifyMusicsListView.Size = new System.Drawing.Size(277, 466);
+            this.spotifyMusicsListView.Size = new System.Drawing.Size(450, 327);
             this.spotifyMusicsListView.TabIndex = 0;
             this.spotifyMusicsListView.TileSize = new System.Drawing.Size(270, 30);
             this.spotifyMusicsListView.UseCompatibleStateImageBehavior = false;
@@ -243,9 +261,9 @@
             // 
             this.playlistsGroupBox.Controls.Add(this.playlistsListBox);
             this.playlistsGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.playlistsGroupBox.Location = new System.Drawing.Point(4, 80);
+            this.playlistsGroupBox.Location = new System.Drawing.Point(3, 68);
             this.playlistsGroupBox.Name = "playlistsGroupBox";
-            this.playlistsGroupBox.Size = new System.Drawing.Size(265, 494);
+            this.playlistsGroupBox.Size = new System.Drawing.Size(902, 180);
             this.playlistsGroupBox.TabIndex = 10;
             this.playlistsGroupBox.TabStop = false;
             this.playlistsGroupBox.Text = "Playlists";
@@ -271,7 +289,7 @@
             "Chanson Française"});
             this.playlistsListBox.Location = new System.Drawing.Point(0, 18);
             this.playlistsListBox.Name = "playlistsListBox";
-            this.playlistsListBox.Size = new System.Drawing.Size(265, 466);
+            this.playlistsListBox.Size = new System.Drawing.Size(902, 162);
             this.playlistsListBox.TabIndex = 0;
             this.playlistsListBox.SelectedIndexChanged += new System.EventHandler(this.playlistsListBox_SelectedIndexChanged);
             // 
@@ -350,45 +368,16 @@
             this.profilePictureBox.TabIndex = 0;
             this.profilePictureBox.TabStop = false;
             // 
-            // groupBox1
+            // playlistNotUserLabel
             // 
-            this.groupBox1.Controls.Add(this.listView1);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(563, 80);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(277, 494);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Local musics in xxx";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.listView2);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Location = new System.Drawing.Point(846, 80);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(275, 494);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "File Explorer";
-            // 
-            // listView1
-            // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.listView1.Location = new System.Drawing.Point(0, 18);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(277, 466);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView2
-            // 
-            this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.listView2.Location = new System.Drawing.Point(0, 18);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(275, 466);
-            this.listView2.TabIndex = 0;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.playlistNotUserLabel.AutoSize = true;
+            this.playlistNotUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playlistNotUserLabel.ForeColor = System.Drawing.Color.Red;
+            this.playlistNotUserLabel.Location = new System.Drawing.Point(0, 14);
+            this.playlistNotUserLabel.Name = "playlistNotUserLabel";
+            this.playlistNotUserLabel.Size = new System.Drawing.Size(29, 13);
+            this.playlistNotUserLabel.TabIndex = 1;
+            this.playlistNotUserLabel.Text = "Error";
             // 
             // GUI
             // 
@@ -397,7 +386,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1121, 599);
+            this.ClientSize = new System.Drawing.Size(910, 643);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.loginPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -409,13 +398,13 @@
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.spotifyMusicGroupBox.ResumeLayout(false);
+            this.spotifyMusicGroupBox.PerformLayout();
             this.playlistsGroupBox.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -447,10 +436,9 @@
         private System.Windows.Forms.ColumnHeader Title;
         private System.Windows.Forms.ColumnHeader Artist;
         private System.Windows.Forms.ColumnHeader Album;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.Label playlistNotUserLabel;
     }
 }
 

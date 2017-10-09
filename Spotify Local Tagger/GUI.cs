@@ -114,11 +114,15 @@ namespace Spotify_Local_Tagger
             if(theUser.getNbPlaylists() > 0)
             {
                 spotifyMusicsListView.Items.Clear();
+                playlistNotUserLabel.Text = "";
 
                 ImageList imageListSmall = new ImageList();
                 imageListSmall.Images.Add(Bitmap.FromFile("C:/Users/Utilisateur/Pictures/spotFileIco.bmp"));
 
                 List<ListViewItem> theItems = theUser.getSongsOfPlaylistAsStrings(0);
+
+                if (theItems.Count == 0)
+                    playlistNotUserLabel.Text = "This playlist can't be read as it is not yours";
 
                 foreach(ListViewItem item in theItems)
                 {
@@ -140,7 +144,11 @@ namespace Spotify_Local_Tagger
             }
 
             spotifyMusicsListView.Items.Clear();
+            playlistNotUserLabel.Text = "";
             List<ListViewItem> newItems = theUser.getSongsOfPlaylistAsStrings(playlistsListBox.SelectedIndex);
+
+            if (newItems.Count == 0)
+                playlistNotUserLabel.Text = "This playlist can't be read as it is not yours";
 
             foreach (ListViewItem item in newItems)
             {
