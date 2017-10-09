@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -155,6 +156,26 @@ namespace Spotify_Local_Tagger
                 spotifyMusicsListView.Items.Add(item);
             }
 
+        }
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            String selectedPath = "";
+
+            var t = new Thread((ThreadStart)(() => {
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
+                fbd.ShowNewFolderButton = false;
+                if (fbd.ShowDialog() == DialogResult.Cancel)
+                    return;
+
+                selectedPath = fbd.SelectedPath;
+            }));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+
+            folderTextBox.Text = selectedPath;
         }
     }
 }

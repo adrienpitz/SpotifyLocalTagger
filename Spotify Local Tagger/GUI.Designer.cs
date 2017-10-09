@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
             this.credentialsLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
@@ -44,6 +44,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.spotifyMusicGroupBox = new System.Windows.Forms.GroupBox();
+            this.playlistNotUserLabel = new System.Windows.Forms.Label();
             this.spotifyMusicsListView = new System.Windows.Forms.ListView();
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Artist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,7 +58,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
-            this.playlistNotUserLabel = new System.Windows.Forms.Label();
+            this.folderTextBox = new System.Windows.Forms.TextBox();
+            this.browseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).BeginInit();
             this.loginPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -196,6 +198,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.browseButton);
+            this.groupBox1.Controls.Add(this.folderTextBox);
             this.groupBox1.Controls.Add(this.listView1);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(455, 254);
@@ -208,9 +212,9 @@
             // listView1
             // 
             this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.listView1.Location = new System.Drawing.Point(0, 30);
+            this.listView1.Location = new System.Drawing.Point(0, 40);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(459, 327);
+            this.listView1.Size = new System.Drawing.Size(459, 317);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -226,6 +230,17 @@
             this.spotifyMusicGroupBox.TabStop = false;
             this.spotifyMusicGroupBox.Text = "Spotify musics in xxx";
             // 
+            // playlistNotUserLabel
+            // 
+            this.playlistNotUserLabel.AutoSize = true;
+            this.playlistNotUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playlistNotUserLabel.ForeColor = System.Drawing.Color.Red;
+            this.playlistNotUserLabel.Location = new System.Drawing.Point(0, 17);
+            this.playlistNotUserLabel.Name = "playlistNotUserLabel";
+            this.playlistNotUserLabel.Size = new System.Drawing.Size(29, 13);
+            this.playlistNotUserLabel.TabIndex = 1;
+            this.playlistNotUserLabel.Text = "Error";
+            // 
             // spotifyMusicsListView
             // 
             this.spotifyMusicsListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -235,10 +250,10 @@
             this.Album});
             this.spotifyMusicsListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.spotifyMusicsListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 30);
+            listViewItem4});
+            this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 40);
             this.spotifyMusicsListView.Name = "spotifyMusicsListView";
-            this.spotifyMusicsListView.Size = new System.Drawing.Size(450, 327);
+            this.spotifyMusicsListView.Size = new System.Drawing.Size(450, 317);
             this.spotifyMusicsListView.TabIndex = 0;
             this.spotifyMusicsListView.TileSize = new System.Drawing.Size(270, 30);
             this.spotifyMusicsListView.UseCompatibleStateImageBehavior = false;
@@ -368,16 +383,26 @@
             this.profilePictureBox.TabIndex = 0;
             this.profilePictureBox.TabStop = false;
             // 
-            // playlistNotUserLabel
+            // folderTextBox
             // 
-            this.playlistNotUserLabel.AutoSize = true;
-            this.playlistNotUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playlistNotUserLabel.ForeColor = System.Drawing.Color.Red;
-            this.playlistNotUserLabel.Location = new System.Drawing.Point(0, 14);
-            this.playlistNotUserLabel.Name = "playlistNotUserLabel";
-            this.playlistNotUserLabel.Size = new System.Drawing.Size(29, 13);
-            this.playlistNotUserLabel.TabIndex = 1;
-            this.playlistNotUserLabel.Text = "Error";
+            this.folderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.folderTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.folderTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.folderTextBox.Location = new System.Drawing.Point(4, 14);
+            this.folderTextBox.Name = "folderTextBox";
+            this.folderTextBox.Size = new System.Drawing.Size(343, 20);
+            this.folderTextBox.TabIndex = 1;
+            // 
+            // browseButton
+            // 
+            this.browseButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.browseButton.Location = new System.Drawing.Point(353, 14);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(97, 20);
+            this.browseButton.TabIndex = 2;
+            this.browseButton.Text = "Browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // GUI
             // 
@@ -399,6 +424,7 @@
             this.loginPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.spotifyMusicGroupBox.ResumeLayout(false);
             this.spotifyMusicGroupBox.PerformLayout();
             this.playlistsGroupBox.ResumeLayout(false);
@@ -439,6 +465,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label playlistNotUserLabel;
+        private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.TextBox folderTextBox;
     }
 }
 
