@@ -29,6 +29,15 @@ namespace Spotify_Local_Tagger
             //At the begining, login panel is visible
             loginPanel.Visible = true;
             mainPanel.Visible = false;
+            initLocalSongsListView();
+            
+        }
+
+        private void initLocalSongsListView()
+        {
+            ImageList imageListSmall = new ImageList();
+            imageListSmall.Images.Add(Bitmap.FromFile("C:/Users/Utilisateur/Pictures/musicFile.bmp"));
+            localListView.LargeImageList = imageListSmall;
         }
 
         /**
@@ -161,6 +170,7 @@ namespace Spotify_Local_Tagger
         private void browseButton_Click(object sender, EventArgs e)
         {
             String selectedPath = "";
+            localListView.Items.Clear();
 
             var t = new Thread((ThreadStart)(() => {
                 FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -176,6 +186,13 @@ namespace Spotify_Local_Tagger
             t.Join();
 
             folderTextBox.Text = selectedPath;
+
+            List<ListViewItem> newItems = theUser.getLocalSongsAsStrings(folderTextBox.Text);
+            foreach (ListViewItem item in newItems)
+            {
+                localListView.Items.Add(item);
+            }
+
         }
     }
 }

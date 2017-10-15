@@ -18,12 +18,15 @@ namespace Spotify_Local_Tagger
         GUI theGui;
         PrivateProfile profile;
         List<SimplePlaylist> playlists;
+        List<PlaylistTrack> spotifyTrackSet;
+        List<TagLib.File> mp3TrackSet;
 
 
         public User(GUI gui)
         {
             theGui = gui;
             connect();
+            mp3TrackSet = new List<TagLib.File>();
             while(spotifyAPI == null) { }
             initComponents();
 
@@ -114,13 +117,56 @@ namespace Spotify_Local_Tagger
             return thePlaylists;
         }
 
+
+        private void ProcessDirectory(string targetDirectory, List<String> toComplete)
+        {
+            string[] fileEntries = Directory.GetFiles(targetDirectory, "*.mp3");
+            foreach (string fileName in fileEntries)
+                toComplete.Add(fileName);
+
+            string[] subDirectoryEntries = Directory.GetDirectories(targetDirectory);
+            foreach (string subDirectory in subDirectoryEntries)
+                ProcessDirectory(subDirectory, toComplete);
+        }
+
+
+        public List<ListViewItem> getLocalSongsAsStrings(String pathToFolder)
+        {
+            List<ListViewItem> theSongsItems = new List<ListViewItem>();
+
+            mp3TrackSet.Clear();
+
+            List<String> pathsList = new List<string>();
+
+            ProcessDirectory(pathToFolder, pathsList);
+
+            //Now that we have the paths, we will complete the list with taglib instances
+            foreach(string path in pathsList)
+            {
+                TagLib.File file = TagLib.File.Create(path);
+                if(file != null)
+                {
+                    mp3TrackSet.Add(file);
+                }
+            }
+
+            foreach(TagLib.File file in mp3TrackSet)
+            {
+                ListViewItem theItem = new ListViewItem(new string[] { Path.GetFileName(file.Name) });
+                theItem.ImageIndex = 0;
+                theSongsItems.Add(theItem);
+            }
+
+            return theSongsItems;
+        }
+
         public List<ListViewItem> getSongsOfPlaylistAsStrings(int playlistId)
         {
             List<ListViewItem> theSongs = new List<ListViewItem>();
 
             SimplePlaylist thePlaylist = playlists.ElementAt(playlistId);
 
-            List<PlaylistTrack> trackSet = new List<PlaylistTrack>();
+            spotifyTrackSet = new List<PlaylistTrack>();
 
             Paging<PlaylistTrack> tracks = spotifyAPI.GetPlaylistTracks(profile.Id, thePlaylist.Id);
 
@@ -146,11 +192,11 @@ namespace Spotify_Local_Tagger
                 foreach (PlaylistTrack track in tracks.Items)
                 {
                     if (track != null)
-                        trackSet.Add(track);
+                        spotifyTrackSet.Add(track);
                 }
             }
 
-            foreach(PlaylistTrack track in trackSet)
+            foreach(PlaylistTrack track in spotifyTrackSet)
             {
                 ListViewItem theItem = new ListViewItem(new string[] { track.Track.Name, track.Track.Artists[0].Name, track.Track.Album.Name });
                 theItem.ImageIndex = 0;

@@ -42,7 +42,9 @@
             this.loginPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.browseButton = new System.Windows.Forms.Button();
+            this.folderTextBox = new System.Windows.Forms.TextBox();
+            this.localListView = new System.Windows.Forms.ListView();
             this.spotifyMusicGroupBox = new System.Windows.Forms.GroupBox();
             this.playlistNotUserLabel = new System.Windows.Forms.Label();
             this.spotifyMusicsListView = new System.Windows.Forms.ListView();
@@ -58,8 +60,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
-            this.folderTextBox = new System.Windows.Forms.TextBox();
-            this.browseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).BeginInit();
             this.loginPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -200,7 +200,7 @@
             // 
             this.groupBox1.Controls.Add(this.browseButton);
             this.groupBox1.Controls.Add(this.folderTextBox);
-            this.groupBox1.Controls.Add(this.listView1);
+            this.groupBox1.Controls.Add(this.localListView);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(455, 254);
             this.groupBox1.Name = "groupBox1";
@@ -209,14 +209,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Local musics in xxx";
             // 
-            // listView1
+            // browseButton
             // 
-            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.listView1.Location = new System.Drawing.Point(0, 40);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(459, 317);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.browseButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.browseButton.Location = new System.Drawing.Point(353, 14);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(97, 20);
+            this.browseButton.TabIndex = 2;
+            this.browseButton.Text = "Browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+            // 
+            // folderTextBox
+            // 
+            this.folderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.folderTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.folderTextBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.folderTextBox.Location = new System.Drawing.Point(4, 14);
+            this.folderTextBox.Name = "folderTextBox";
+            this.folderTextBox.Size = new System.Drawing.Size(343, 20);
+            this.folderTextBox.TabIndex = 1;
+            // 
+            // localListView
+            // 
+            this.localListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.localListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.localListView.Location = new System.Drawing.Point(0, 40);
+            this.localListView.Name = "localListView";
+            this.localListView.Size = new System.Drawing.Size(450, 317);
+            this.localListView.TabIndex = 0;
+            this.localListView.TileSize = new System.Drawing.Size(270, 30);
+            this.localListView.UseCompatibleStateImageBehavior = false;
+            this.localListView.View = System.Windows.Forms.View.Tile;
             // 
             // spotifyMusicGroupBox
             // 
@@ -383,27 +407,6 @@
             this.profilePictureBox.TabIndex = 0;
             this.profilePictureBox.TabStop = false;
             // 
-            // folderTextBox
-            // 
-            this.folderTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.folderTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.folderTextBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.folderTextBox.Location = new System.Drawing.Point(4, 14);
-            this.folderTextBox.Name = "folderTextBox";
-            this.folderTextBox.Size = new System.Drawing.Size(343, 20);
-            this.folderTextBox.TabIndex = 1;
-            // 
-            // browseButton
-            // 
-            this.browseButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.browseButton.Location = new System.Drawing.Point(353, 14);
-            this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(97, 20);
-            this.browseButton.TabIndex = 2;
-            this.browseButton.Text = "Browse";
-            this.browseButton.UseVisualStyleBackColor = true;
-            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
-            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,7 +421,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Spotify Local Tagger";
+            this.Text = "Spotify Local Tagger - By Adrien Pitz";
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).EndInit();
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
@@ -463,7 +466,7 @@
         private System.Windows.Forms.ColumnHeader Artist;
         private System.Windows.Forms.ColumnHeader Album;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView localListView;
         private System.Windows.Forms.Label playlistNotUserLabel;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.TextBox folderTextBox;
