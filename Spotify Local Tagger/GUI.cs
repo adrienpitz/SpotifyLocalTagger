@@ -193,6 +193,8 @@ namespace Spotify_Local_Tagger
             {
                 folderTextBox.Text = selectedPath;
 
+
+
                 List<ListViewItem> newItems = theUser.getLocalSongsAsStrings(folderTextBox.Text);
                 foreach (ListViewItem item in newItems)
                 {
