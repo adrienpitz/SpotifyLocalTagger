@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Spotify_Local_Tagger
 {
-    class SpotifySong
+    class SpotifySong : Song
     {
 
         private byte[] imageBytes;
@@ -20,6 +20,7 @@ namespace Spotify_Local_Tagger
 
         public SpotifySong(PlaylistTrack _track, SpotifyWebAPI api)
         {
+            
             track = _track;
             hasBeenPaired = false;
             if (track == null)
@@ -28,6 +29,8 @@ namespace Spotify_Local_Tagger
             {
                 downloadImage();
                 downloadFullAlbum(api);
+                initMatchingString();
+                processMatchingString();
             }
 
         }
@@ -44,7 +47,8 @@ namespace Spotify_Local_Tagger
             if (images != null) {
                 try
                 {
-                    imageBytes = webclient.DownloadData(images.ElementAt(0).Url);
+                    if(images.Count > 0)
+                       imageBytes = webclient.DownloadData(images.ElementAt(0).Url);
 
                     if(imageBytes == null || imageBytes.Count() == 0)
                     {
@@ -107,5 +111,33 @@ namespace Spotify_Local_Tagger
             return track.Track.Album.Name;
         }
 
+        public string[] getArtistsAlbum()
+        {
+            List<string> albumArtists = new List<string>();
+            foreach (SimpleArtist artist in fullAlbum.Artists)
+            {
+                albumArtists.Add(artist.Name);
+            }
+
+            return albumArtists.ToArray();
+            
+        }
+
+        public override void initMatchingString()
+        {
+            matchingString = "";
+
+            string[] performers = getPerformers();
+
+            //TODO: See if setting all artists is better than just put the princpal one
+            foreach(string performer in performers)
+            {
+                matchingString = matchingString + performer + " ";
+            }
+
+            matchingString += "- ";
+
+            matchingString += getTitle();
+        }
     }
 }

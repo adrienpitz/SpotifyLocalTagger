@@ -207,12 +207,13 @@ namespace Spotify_Local_Tagger
         private void synchronizeButton_Click(object sender, EventArgs e)
         {
             // Step 1: Retrieve all informations from Spotify
+            theUser.fillSpotifySongs();
+            theUser.fillLocalSongs();
 
-            // Step 2: Making the strings and epurate them
+            // Step 2: Matching and tagging
 
-            // Step 3: Matching and tagging
+            // Step 3: Open the form for manual matching
 
-            // Step 4: Open the form for manual matching
         }
     }
 }

@@ -21,12 +21,18 @@ namespace Spotify_Local_Tagger
         List<PlaylistTrack> spotifyTrackSet;
         List<TagLib.File> mp3TrackSet;
 
+        List<LocalSong> localSongs;
+        List<SpotifySong> spotifySongs;
+
 
         public User(GUI gui)
         {
             theGui = gui;
             connect();
             mp3TrackSet = new List<TagLib.File>();
+            spotifyTrackSet = new List<PlaylistTrack>();
+            localSongs = new List<LocalSong>();
+            spotifySongs = new List<SpotifySong>();
             while(spotifyAPI == null) { }
             initComponents();
 
@@ -204,6 +210,32 @@ namespace Spotify_Local_Tagger
             }
 
             return theSongs;
+        }
+
+        public void fillLocalSongs()
+        {
+            foreach(TagLib.File file in mp3TrackSet)
+            {
+                LocalSong song = new LocalSong(file);
+                if(song != null)
+                {
+                    localSongs.Add(song);
+                }
+            }
+        }
+
+        public void fillSpotifySongs()
+        {
+
+            //TODO : Perform the operation in // ?
+            foreach(PlaylistTrack spotifyTrack in spotifyTrackSet)
+            {
+                SpotifySong song = new SpotifySong(spotifyTrack, spotifyAPI);
+                if (song != null)
+                {
+                    spotifySongs.Add(song);
+                }
+            }
         }
     }
 }
