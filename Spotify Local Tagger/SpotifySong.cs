@@ -1,4 +1,5 @@
-﻿using SpotifyAPI.Web.Models;
+﻿using SpotifyAPI.Web;
+using SpotifyAPI.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,9 @@ namespace Spotify_Local_Tagger
         PlaylistTrack track;
         bool hasBeenPaired;
         bool isInvalid;
+        FullAlbum fullAlbum;
 
-        public SpotifySong(PlaylistTrack _track)
+        public SpotifySong(PlaylistTrack _track, SpotifyWebAPI api)
         {
             track = _track;
             hasBeenPaired = false;
@@ -25,7 +27,14 @@ namespace Spotify_Local_Tagger
             else
             {
                 downloadImage();
+                downloadFullAlbum(api);
             }
+
+        }
+
+        private void downloadFullAlbum(SpotifyWebAPI api)
+        {
+            fullAlbum = api.GetAlbum(track.Track.Album.Id);
         }
 
         private void downloadImage()
@@ -82,6 +91,20 @@ namespace Spotify_Local_Tagger
         public uint getDiskNumber()
         {
             return (uint)track.Track.DiscNumber;
+        }
+
+        public uint getYearAlbum()
+        {
+            if(fullAlbum != null)
+            {
+                return (uint)Int32.Parse(fullAlbum.ReleaseDate.Substring(0, 4));
+            }
+            return 0;
+        }
+
+        public string getNameAlbum()
+        {
+            return track.Track.Album.Name;
         }
 
     }
