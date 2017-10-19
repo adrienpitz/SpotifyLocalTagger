@@ -170,6 +170,7 @@ namespace Spotify_Local_Tagger
         private void browseButton_Click(object sender, EventArgs e)
         {
             String selectedPath = "";
+            bool hasCancelled = false;
             localListView.Items.Clear();
 
             var t = new Thread((ThreadStart)(() => {
@@ -177,7 +178,10 @@ namespace Spotify_Local_Tagger
                 fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
                 fbd.ShowNewFolderButton = false;
                 if (fbd.ShowDialog() == DialogResult.Cancel)
+                {
+                    hasCancelled = true;
                     return;
+                }
 
                 selectedPath = fbd.SelectedPath;
             }));
@@ -185,14 +189,28 @@ namespace Spotify_Local_Tagger
             t.Start();
             t.Join();
 
-            folderTextBox.Text = selectedPath;
-
-            List<ListViewItem> newItems = theUser.getLocalSongsAsStrings(folderTextBox.Text);
-            foreach (ListViewItem item in newItems)
+            if (!hasCancelled)
             {
-                localListView.Items.Add(item);
+                folderTextBox.Text = selectedPath;
+
+                List<ListViewItem> newItems = theUser.getLocalSongsAsStrings(folderTextBox.Text);
+                foreach (ListViewItem item in newItems)
+                {
+                    localListView.Items.Add(item);
+                }
             }
 
+        }
+
+        private void synchronizeButton_Click(object sender, EventArgs e)
+        {
+            // Step 1: Retrieve all informations from Spotify
+
+            // Step 2: Making the strings and epurate them
+
+            // Step 3: Matching and tagging
+
+            // Step 4: Open the form for manual matching
         }
     }
 }
