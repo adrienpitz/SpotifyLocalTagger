@@ -69,7 +69,20 @@ namespace Spotify_Local_Tagger
             return new TagLib.Picture(new TagLib.ByteVector(imageBytes.ToArray()));
         }
 
+        public string getTitle()
+        {
+            return track.Track.Name;
+        }
 
+        public uint getTrackNumber()
+        {
+            return (uint)track.Track.TrackNumber;
+        }
+
+        public uint getDiskNumber()
+        {
+            return (uint)track.Track.DiscNumber;
+        }
 
     }
 }
