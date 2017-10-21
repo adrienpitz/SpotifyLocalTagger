@@ -214,6 +214,9 @@ namespace Spotify_Local_Tagger
 
         public void fillLocalSongs()
         {
+
+            localSongs.Clear();
+
             foreach(TagLib.File file in mp3TrackSet)
             {
                 LocalSong song = new LocalSong(file);
@@ -226,6 +229,8 @@ namespace Spotify_Local_Tagger
 
         public void fillSpotifySongs()
         {
+
+            spotifySongs.Clear();
 
             //TODO : Perform the operation in // ?
             foreach(PlaylistTrack spotifyTrack in spotifyTrackSet)
