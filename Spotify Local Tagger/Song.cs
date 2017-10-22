@@ -34,6 +34,8 @@ namespace Spotify_Local_Tagger
             deletePonctuation();
             replaceAnd();
             deleteSlash();
+            removeLastSentence();
+            deleteDash();
             //TODO : Remove
             Console.WriteLine(matchingString);
         }
@@ -129,6 +131,7 @@ namespace Spotify_Local_Tagger
 
         private void deleteSlash()
         {
+            //TODO: See if it is better than MP3ModifierFactory
             matchingString = matchingString.Replace("/", string.Empty);
         }
 
@@ -168,11 +171,62 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("'", string.Empty);
             matchingString = matchingString.Replace(",", string.Empty);
             matchingString = matchingString.Replace("\"", string.Empty);
+            matchingString = matchingString.Replace("*", string.Empty);
         }
 
         private void replaceAnd()
         {
             matchingString = matchingString.Replace("&", "AND");
+        }
+
+        private void removeLastSentence()
+        {
+            int lastIndex = matchingString.LastIndexOf("-");
+            int firstIndex = matchingString.IndexOf("-");
+
+            //If we have at least 2 '-' in the string
+            if(lastIndex != firstIndex)
+            {
+                string toAnalyze = matchingString.Substring(lastIndex);
+
+
+                if (toAnalyze.Contains("REMASTER"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
+                    return;
+                }
+
+                if (toAnalyze.Contains("VERSION"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
+                    return;
+                }
+
+                if (toAnalyze.Contains("MONO"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
+                    return;
+                }
+
+                if (toAnalyze.Contains("STEREO"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
+                    return;
+                }
+
+                if (toAnalyze.Contains("ORIGINAL"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
+                    return;
+                }
+
+            }
+
+        }
+
+        private void deleteDash()
+        {
+            matchingString = matchingString.Replace("-", string.Empty);
         }
 
     }
