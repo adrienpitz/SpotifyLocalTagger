@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Spotify_Local_Tagger
@@ -29,6 +30,7 @@ namespace Spotify_Local_Tagger
             setToUpperCase();
             replaceAccents();
             deleteFeaturings();
+            removeDigitBeforeSong();
             //TODO : Remove
             Console.WriteLine(matchingString);
         }
@@ -130,6 +132,23 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("FEAT", string.Empty);
             matchingString = matchingString.Replace("FT", string.Empty);
             matchingString = matchingString.Replace("FEATURING", string.Empty);
+        }
+
+        private void removeDigitBeforeSong()
+        {
+            Regex myRegex = new Regex(@"^[0-9]+");
+
+            int indexOfDash = matchingString.IndexOf("-");
+
+            if(indexOfDash > 0)
+            {
+
+                string substr = matchingString.Substring(0, indexOfDash);
+
+                if (myRegex.IsMatch(substr))
+                    matchingString = matchingString.Remove(0, indexOfDash+1);
+
+            }
         }
 
     }
