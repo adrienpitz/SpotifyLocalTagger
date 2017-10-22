@@ -31,6 +31,9 @@ namespace Spotify_Local_Tagger
             replaceAccents();
             deleteFeaturings();
             removeDigitBeforeSong();
+            deletePonctuation();
+            replaceAnd();
+            deleteSlash();
             //TODO : Remove
             Console.WriteLine(matchingString);
         }
@@ -124,6 +127,11 @@ namespace Spotify_Local_Tagger
             return true;
         }
 
+        private void deleteSlash()
+        {
+            matchingString = matchingString.Replace("/", string.Empty);
+        }
+
         private void deleteFeaturings()
         {
             matchingString = matchingString.Replace("FEAT.", string.Empty);
@@ -149,6 +157,22 @@ namespace Spotify_Local_Tagger
                     matchingString = matchingString.Remove(0, indexOfDash+1);
 
             }
+        }
+
+        private void deletePonctuation()
+        {
+            matchingString = matchingString.Replace(".", string.Empty);
+            matchingString = matchingString.Replace("?", string.Empty);
+            matchingString = matchingString.Replace("!", string.Empty);
+            matchingString = matchingString.Replace("’", string.Empty);
+            matchingString = matchingString.Replace("'", string.Empty);
+            matchingString = matchingString.Replace(",", string.Empty);
+            matchingString = matchingString.Replace("\"", string.Empty);
+        }
+
+        private void replaceAnd()
+        {
+            matchingString = matchingString.Replace("&", "AND");
         }
 
     }
