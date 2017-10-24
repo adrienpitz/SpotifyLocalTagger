@@ -73,6 +73,9 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("Å", "A");
             matchingString = matchingString.Replace("Ö", "O");
             matchingString = matchingString.Replace("Ü", "U");
+            matchingString = matchingString.Replace("Ú", "U");
+            matchingString = matchingString.Replace("Û", "U");
+            matchingString = matchingString.Replace("Ù", "U");
             matchingString = matchingString.Replace("Ã", "A");
             matchingString = matchingString.Replace("Õ", "O");
             matchingString = matchingString.Replace("Â", "A");
@@ -82,6 +85,7 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("Ì", "I");
             matchingString = matchingString.Replace("Ó", "O");
             matchingString = matchingString.Replace("Ô", "O");
+            matchingString = matchingString.Replace("Ò", "O");
         }
 
         private void deleteBetweenParenthesis()
