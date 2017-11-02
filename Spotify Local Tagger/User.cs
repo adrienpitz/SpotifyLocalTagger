@@ -242,5 +242,10 @@ namespace Spotify_Local_Tagger
                 }
             }
         }
+
+        public void matchSongs()
+        {
+            MergingFactory.process(localSongs, spotifySongs);
+        }
     }
 }

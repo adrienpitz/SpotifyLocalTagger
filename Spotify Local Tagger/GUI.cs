@@ -211,6 +211,7 @@ namespace Spotify_Local_Tagger
             theUser.fillLocalSongs();
 
             // Step 2: Matching and tagging
+            theUser.matchSongs();
 
             // Step 3: Open the form for manual matching
 

@@ -19,6 +19,11 @@ namespace Spotify_Local_Tagger
 
         public abstract void initMatchingString();
 
+        public String getMatchingString()
+        {
+            return matchingString;
+        }
+
         public void processMatchingString()
         {
             deleteSpaces();
@@ -36,6 +41,7 @@ namespace Spotify_Local_Tagger
             deleteSlash();
             removeLastSentence();
             deleteDash();
+            deleteLyrics();
             //TODO : Remove
             Console.WriteLine(matchingString);
         }
@@ -231,6 +237,11 @@ namespace Spotify_Local_Tagger
         private void deleteDash()
         {
             matchingString = matchingString.Replace("-", string.Empty);
+        }
+
+        private void deleteLyrics()
+        {
+            matchingString = matchingString.Replace("LYRICS", string.Empty);
         }
 
     }

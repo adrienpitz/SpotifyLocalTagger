@@ -72,6 +72,7 @@ namespace Spotify_Local_Tagger
             foreach (SimpleArtist performer in track.Track.Artists)
             {
                 performers.Add(performer.Name);
+                Console.WriteLine(performer.Name);
             }
 
             return performers.ToArray();
@@ -138,6 +139,21 @@ namespace Spotify_Local_Tagger
             matchingString += "- ";
 
             matchingString += getTitle();
+        }
+
+        public uint getNbAlbumTracks()
+        {
+            return (uint)fullAlbum.Tracks.Items.Count();
+        }
+
+        public TagLib.Id3v2.AttachedPictureFrame getAlbumImage()
+        {
+            TagLib.Picture picture = new TagLib.Picture(new TagLib.ByteVector(imageBytes.ToArray()));
+            TagLib.Id3v2.AttachedPictureFrame albumCoverPictFrame = new TagLib.Id3v2.AttachedPictureFrame(picture);
+            albumCoverPictFrame.Type = TagLib.PictureType.FrontCover;
+            albumCoverPictFrame.TextEncoding = TagLib.StringType.Latin1;
+
+            return albumCoverPictFrame;
         }
     }
 }

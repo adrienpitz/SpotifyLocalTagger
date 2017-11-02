@@ -22,5 +22,10 @@ namespace Spotify_Local_Tagger
         {
             matchingString = Path.GetFileNameWithoutExtension(track.Name);
         }
+
+        public TagLib.File getTrack()
+        {
+            return track;
+        }
     }
 }
