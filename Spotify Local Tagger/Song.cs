@@ -43,7 +43,7 @@ namespace Spotify_Local_Tagger
             deleteDash();
             deleteLyrics();
             //TODO : Remove
-            Console.WriteLine(matchingString);
+            //Console.WriteLine(matchingString);
         }
 
         private void deleteSpaces()

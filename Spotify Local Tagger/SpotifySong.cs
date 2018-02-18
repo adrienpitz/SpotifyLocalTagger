@@ -72,7 +72,7 @@ namespace Spotify_Local_Tagger
             foreach (SimpleArtist performer in track.Track.Artists)
             {
                 performers.Add(performer.Name);
-                Console.WriteLine(performer.Name);
+                //Console.WriteLine(performer.Name);
             }
 
             return performers.ToArray();
@@ -141,6 +141,12 @@ namespace Spotify_Local_Tagger
             matchingString += getTitle();
         }
 
+        public void initMatchingString(string toPut)
+        {
+            if(toPut != null)
+                matchingString = toPut;
+        }
+
         public uint getNbAlbumTracks()
         {
             return (uint)fullAlbum.Tracks.Items.Count();
@@ -155,5 +161,6 @@ namespace Spotify_Local_Tagger
 
             return albumCoverPictFrame;
         }
+
     }
 }

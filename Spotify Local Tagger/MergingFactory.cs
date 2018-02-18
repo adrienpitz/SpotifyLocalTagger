@@ -39,8 +39,44 @@ namespace Spotify_Local_Tagger
                     {
                         mergeTags(spotifySongs.ElementAt(minId), localSongs.ElementAt(i));
                         spotifySongs.RemoveAt(minId);
+                        localToRemove.Add(i);
                     }
                 }
+
+                //Delete local songs already processed
+                Console.Write(localSongs.Count + " - ");
+                for(int i = localToRemove.Count-1; i >= 0; i--)
+                {
+                    localSongs.RemoveAt(i);
+                }
+                Console.Write(localSongs.Count + "\n");
+
+
+                //Merge remaining songs if we can
+                localToRemove.Clear();
+
+                for(int i=0; i < localSongs.Count; ++i)
+                {
+                    for(int j=0; j < spotifySongs.Count; ++j)
+                    {
+                        if(compareByElements(spotifySongs.ElementAt(j), localSongs.ElementAt(i)))
+                        {
+                            mergeTags(spotifySongs.ElementAt(j), localSongs.ElementAt(i));
+                            spotifySongs.RemoveAt(j);
+                            localToRemove.Add(i);
+                            break;
+                        }
+                    }
+                }
+
+                //Delete remaining local songs that have been processed
+                Console.Write(localSongs.Count + " - ");
+                for (int i = localToRemove.Count - 1; i >= 0; i--)
+                {
+                    localSongs.RemoveAt(i);
+                }
+                Console.Write(localSongs.Count + "\n");
+
             }
         }
 
@@ -72,6 +108,44 @@ namespace Spotify_Local_Tagger
             }
 
             return d[n, m];
+        }
+
+        private static bool compareByElements(SpotifySong spotifySong, LocalSong localSong)
+        {
+
+            //We have a score and we evaluate if this is sufficiently good to merge the two songs
+            string localMatchString = localSong.getMatchingString();
+            //1. Look for the artists
+            string[] performers = spotifySong.getPerformers();
+            int nbOK = 0;
+            foreach(string performer in performers)
+            {
+                spotifySong.initMatchingString(performer);
+                spotifySong.processMatchingString();
+                if (localMatchString.Contains(spotifySong.getMatchingString()))
+                {
+                    nbOK++;
+                    break;
+                }
+            }
+
+            //2. Look for the title
+            bool hasGoodTitle = false;
+            spotifySong.initMatchingString(spotifySong.getTitle());
+            spotifySong.processMatchingString();
+            if (localMatchString.Contains(spotifySong.getMatchingString()))
+                hasGoodTitle = true;
+
+            //3. Reinit matching strings
+            spotifySong.initMatchingString();
+            spotifySong.processMatchingString();
+            if (nbOK > 0 && hasGoodTitle)
+            {
+                Console.WriteLine(spotifySong.getMatchingString() + " -- " + localSong.getMatchingString());
+                return true;
+            }
+
+            return false;
         }
 
         private static void mergeTags(SpotifySong spotifySong, LocalSong localSong)

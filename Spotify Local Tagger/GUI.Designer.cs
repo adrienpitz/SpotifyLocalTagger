@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.credentialsLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
@@ -41,6 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.synchronizeButton = new System.Windows.Forms.Button();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.browseButton = new System.Windows.Forms.Button();
             this.folderTextBox = new System.Windows.Forms.TextBox();
@@ -60,8 +62,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.synchronizeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).BeginInit();
             this.loginPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -200,6 +200,25 @@
             this.mainPanel.Size = new System.Drawing.Size(910, 649);
             this.mainPanel.TabIndex = 10;
             // 
+            // synchronizeButton
+            // 
+            this.synchronizeButton.Location = new System.Drawing.Point(808, 623);
+            this.synchronizeButton.Name = "synchronizeButton";
+            this.synchronizeButton.Size = new System.Drawing.Size(97, 23);
+            this.synchronizeButton.TabIndex = 14;
+            this.synchronizeButton.Text = "Synchronize";
+            this.synchronizeButton.UseVisualStyleBackColor = true;
+            this.synchronizeButton.Click += new System.EventHandler(this.synchronizeButton_Click);
+            // 
+            // progressBar
+            // 
+            this.progressBar.BackColor = System.Drawing.Color.Yellow;
+            this.progressBar.ForeColor = System.Drawing.Color.Lime;
+            this.progressBar.Location = new System.Drawing.Point(3, 623);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(799, 23);
+            this.progressBar.TabIndex = 13;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.browseButton);
@@ -278,7 +297,7 @@
             this.Album});
             this.spotifyMusicsListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.spotifyMusicsListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 40);
             this.spotifyMusicsListView.Name = "spotifyMusicsListView";
             this.spotifyMusicsListView.Size = new System.Drawing.Size(450, 317);
@@ -411,32 +430,13 @@
             this.profilePictureBox.TabIndex = 0;
             this.profilePictureBox.TabStop = false;
             // 
-            // progressBar
-            // 
-            this.progressBar.BackColor = System.Drawing.Color.Yellow;
-            this.progressBar.ForeColor = System.Drawing.Color.Lime;
-            this.progressBar.Location = new System.Drawing.Point(3, 623);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(799, 23);
-            this.progressBar.TabIndex = 13;
-            // 
-            // synchronizeButton
-            // 
-            this.synchronizeButton.Location = new System.Drawing.Point(808, 623);
-            this.synchronizeButton.Name = "synchronizeButton";
-            this.synchronizeButton.Size = new System.Drawing.Size(97, 23);
-            this.synchronizeButton.TabIndex = 14;
-            this.synchronizeButton.Text = "Synchronize";
-            this.synchronizeButton.UseVisualStyleBackColor = true;
-            this.synchronizeButton.Click += new System.EventHandler(this.synchronizeButton_Click);
-            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::Spotify_Local_Tagger.Properties.Resources.elegant_Geometric_Wallpaper_hd;
             this.ClientSize = new System.Drawing.Size(910, 649);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.loginPanel);
