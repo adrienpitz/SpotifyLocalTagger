@@ -161,14 +161,29 @@ namespace Spotify_Local_Tagger
 
             int indexOfDash = matchingString.IndexOf("-");
 
+            // Si il y a une - dans la string
             if(indexOfDash > 0)
             {
 
+                // On check bien si ce qu'il y a entre le début de la phrase et le '-' est un chiffre
                 string substr = matchingString.Substring(0, indexOfDash);
 
                 if (myRegex.IsMatch(substr))
-                    matchingString = matchingString.Remove(0, indexOfDash+1);
+                    matchingString = matchingString.Remove(0, indexOfDash + 1);
 
+            }
+
+            int indexOfPoint = matchingString.IndexOf(".");
+
+            // Si il y a un . dans la string
+            if(indexOfPoint > 0)
+            {
+
+                // On check bien si ce qu'il y a entre le début de la phrase et le '.' est un chiffre
+                string substr = matchingString.Substring(0, indexOfPoint);
+
+                if (myRegex.IsMatch(substr))
+                    matchingString = matchingString.Remove(0, indexOfPoint + 1);
             }
         }
 
