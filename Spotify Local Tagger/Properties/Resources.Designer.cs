@@ -69,16 +69,5 @@ namespace Spotify_Local_Tagger.Properties {
             }
         }
 
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap musicFile
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("musicFile", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

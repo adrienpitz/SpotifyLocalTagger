@@ -2,6 +2,8 @@
 using SpotifyAPI.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -37,7 +39,9 @@ namespace Spotify_Local_Tagger
 
         private void downloadFullAlbum(SpotifyWebAPI api)
         {
+            
             fullAlbum = api.GetAlbum(track.Track.Album.Id);
+
         }
 
         private void downloadImage()
@@ -53,6 +57,10 @@ namespace Spotify_Local_Tagger
                     if(imageBytes == null || imageBytes.Count() == 0)
                     {
                         //TODO : Set default album cover
+                        System.Drawing.Image thepic = Bitmap.FromFile("C:/Users/Utilisateur/Pictures/localTaggerDefaultAlbum.bmp");
+                        var ms = new MemoryStream();
+                        thepic.Save(ms, thepic.RawFormat);
+                        imageBytes = ms.ToArray();
                     }
 
                 }catch(Exception e)
@@ -62,6 +70,10 @@ namespace Spotify_Local_Tagger
             }else
             {
                 //TODO : Set default album cover
+                System.Drawing.Image thepic = Bitmap.FromFile("C:/Users/Utilisateur/Pictures/localTaggerDefaultAlbum.bmp");
+                var ms = new MemoryStream();
+                thepic.Save(ms, thepic.RawFormat);
+                imageBytes = ms.ToArray();
             }
         }
 
@@ -100,7 +112,7 @@ namespace Spotify_Local_Tagger
 
         public uint getYearAlbum()
         {
-            if(fullAlbum != null)
+            if(fullAlbum.ReleaseDate != null)
             {
                 return (uint)Int32.Parse(fullAlbum.ReleaseDate.Substring(0, 4));
             }
@@ -115,9 +127,29 @@ namespace Spotify_Local_Tagger
         public string[] getArtistsAlbum()
         {
             List<string> albumArtists = new List<string>();
-            foreach (SimpleArtist artist in fullAlbum.Artists)
+
+            if (fullAlbum.Artists != null)
             {
-                albumArtists.Add(artist.Name);
+                if (fullAlbum.Artists.Count() != 0) {
+                    foreach (SimpleArtist artist in fullAlbum.Artists)
+                    {
+                        albumArtists.Add(artist.Name);
+                    }
+                }
+                else
+                {
+                    if (track.Track.Artists.Count() > 1)
+                        albumArtists.Add("Various Artists");
+                    else
+                        albumArtists.Add(track.Track.Artists.ElementAt(0).Name);
+                }
+            }
+            else
+            {
+                if (track.Track.Artists.Count() > 1)
+                    albumArtists.Add("Various Artists");
+                else
+                    albumArtists.Add(track.Track.Artists.ElementAt(0).Name);
             }
 
             return albumArtists.ToArray();
@@ -149,7 +181,10 @@ namespace Spotify_Local_Tagger
 
         public uint getNbAlbumTracks()
         {
-            return (uint)fullAlbum.Tracks.Items.Count();
+            if(fullAlbum.Tracks != null)
+                return (uint)fullAlbum.Tracks.Items.Count();
+
+            return 0;
         }
 
         public TagLib.Id3v2.AttachedPictureFrame getAlbumImage()

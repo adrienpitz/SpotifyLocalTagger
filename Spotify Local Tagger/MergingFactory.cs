@@ -155,7 +155,7 @@ namespace Spotify_Local_Tagger
 
             //Perform merge
             localFile.Tag.Clear();
-            localFile.Tag.Artists = spotifySong.getPerformers();
+            localFile.Tag.Performers = spotifySong.getPerformers();
             localFile.Tag.Album = spotifySong.getNameAlbum();
             localFile.Tag.AlbumArtists = spotifySong.getArtistsAlbum();
             localFile.Tag.BeatsPerMinute = 320;
