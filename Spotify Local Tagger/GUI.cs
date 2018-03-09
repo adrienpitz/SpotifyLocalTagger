@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
 
 namespace Spotify_Local_Tagger
 {
@@ -18,6 +20,8 @@ namespace Spotify_Local_Tagger
     {
 
         User theUser;
+        Assembly _assembly;
+        Stream _spotIcoStream;
 
         /**
          * Constructor
@@ -29,6 +33,18 @@ namespace Spotify_Local_Tagger
             //At the begining, login panel is visible
             loginPanel.Visible = true;
             mainPanel.Visible = false;
+
+            try
+            {
+                _assembly = Assembly.GetExecutingAssembly();
+                _spotIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.spotFileIco.bmp");
+            }
+            catch
+            {
+                MessageBox.Show("Error accessing ressources !");
+            }
+
+
             initLocalSongsListView();
             
         }
@@ -36,7 +52,7 @@ namespace Spotify_Local_Tagger
         private void initLocalSongsListView()
         {
             ImageList imageListSmall = new ImageList();
-            imageListSmall.Images.Add(Bitmap.FromFile("C:/Users/Utilisateur/Pictures/musicFile.bmp"));
+            imageListSmall.Images.Add(new Bitmap(_spotIcoStream));   //TODO : change
             localListView.LargeImageList = imageListSmall;
         }
 
@@ -127,7 +143,7 @@ namespace Spotify_Local_Tagger
                 playlistNotUserLabel.Text = "";
 
                 ImageList imageListSmall = new ImageList();
-                imageListSmall.Images.Add(Bitmap.FromFile("C:/Users/Utilisateur/Pictures/spotFileIco.bmp"));
+                imageListSmall.Images.Add(new Bitmap(_spotIcoStream));
 
                 List<ListViewItem> theItems = theUser.getSongsOfPlaylistAsStrings(0);
 

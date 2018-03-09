@@ -105,9 +105,12 @@
     <None Include="Resources\elegant-Geometric-Wallpaper-hd.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\localTaggerDefaultAlbum.bmp" />
+    <EmbeddedResource Include="spotFileIco.bmp" />
+    <None Include="Resources\localTaggerDefaultAlbum.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\musicFile.png" />
-    <Content Include="Resources\spotFileIco.bmp" />
+    <EmbeddedResource Include="Resources\spotFileIco.bmp" />
     <Content Include="Resources\spotFileIco.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
