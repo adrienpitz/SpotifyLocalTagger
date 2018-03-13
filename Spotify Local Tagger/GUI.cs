@@ -22,6 +22,7 @@ namespace Spotify_Local_Tagger
         User theUser;
         Assembly _assembly;
         Stream _spotIcoStream;
+        Stream _localIcoStream;
 
         /**
          * Constructor
@@ -38,6 +39,7 @@ namespace Spotify_Local_Tagger
             {
                 _assembly = Assembly.GetExecutingAssembly();
                 _spotIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.spotFileIco.bmp");
+                _localIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.musicFile.bmp");
             }
             catch
             {
@@ -52,7 +54,7 @@ namespace Spotify_Local_Tagger
         private void initLocalSongsListView()
         {
             ImageList imageListSmall = new ImageList();
-            imageListSmall.Images.Add(new Bitmap(_spotIcoStream));   //TODO : change
+            imageListSmall.Images.Add(new Bitmap(_localIcoStream));
             localListView.LargeImageList = imageListSmall;
         }
 

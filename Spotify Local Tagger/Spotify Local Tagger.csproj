@@ -109,6 +109,7 @@
     <None Include="Resources\localTaggerDefaultAlbum.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="musicFile.bmp" />
     <Content Include="Resources\musicFile.png" />
     <EmbeddedResource Include="Resources\spotFileIco.bmp" />
     <Content Include="Resources\spotFileIco.png" />
