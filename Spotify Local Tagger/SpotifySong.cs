@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,7 +58,9 @@ namespace Spotify_Local_Tagger
                     if(imageBytes == null || imageBytes.Count() == 0)
                     {
                         //TODO : Set default album cover
-                        System.Drawing.Image thepic = Bitmap.FromFile("C:/Users/Utilisateur/Pictures/localTaggerDefaultAlbum.bmp");
+                        Assembly _assembly = Assembly.GetExecutingAssembly();
+                        Stream albumPicStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.Resources.localTaggerDefaultAlbum.bmp");
+                        System.Drawing.Image thepic = new Bitmap(albumPicStream);
                         var ms = new MemoryStream();
                         thepic.Save(ms, thepic.RawFormat);
                         imageBytes = ms.ToArray();
@@ -70,7 +73,9 @@ namespace Spotify_Local_Tagger
             }else
             {
                 //TODO : Set default album cover
-                System.Drawing.Image thepic = Bitmap.FromFile("C:/Users/Utilisateur/Pictures/localTaggerDefaultAlbum.bmp");
+                Assembly _assembly = Assembly.GetExecutingAssembly();
+                Stream albumPicStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.Resources.localTaggerDefaultAlbum.bmp");
+                System.Drawing.Image thepic = new Bitmap(albumPicStream);
                 var ms = new MemoryStream();
                 thepic.Save(ms, thepic.RawFormat);
                 imageBytes = ms.ToArray();

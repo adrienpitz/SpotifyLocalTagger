@@ -38,8 +38,8 @@ namespace Spotify_Local_Tagger
             try
             {
                 _assembly = Assembly.GetExecutingAssembly();
-                _spotIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.spotFileIco.bmp");
-                _localIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.musicFile.bmp");
+                _spotIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.Resources.spotFileIco.bmp");
+                _localIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.Resources.musicFile.bmp");
             }
             catch
             {
