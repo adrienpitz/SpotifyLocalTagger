@@ -19,7 +19,7 @@ namespace Spotify_Local_Tagger
                 //Iterate through the local songs
                 for(int i=0; i < localSongs.Count; ++i)
                 {
-                    int minLevDistance = 6000;
+                    int minLevDistance = 6;
                     int minId = -1;
                     //Iterate through the spotify songs
                     for(int j=0; j < spotifySongs.Count; ++j)
@@ -136,6 +136,8 @@ namespace Spotify_Local_Tagger
             if (localMatchString.Contains(spotifySong.getMatchingString()))
                 hasGoodTitle = true;
 
+            Console.WriteLine("MDDDDDDDD - " + spotifySong.getMatchingString());
+            
             //3. Reinit matching strings
             spotifySong.initMatchingString();
             spotifySong.processMatchingString();

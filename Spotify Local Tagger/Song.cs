@@ -77,6 +77,7 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("Ç", "C");
             matchingString = matchingString.Replace("Ä", "A");
             matchingString = matchingString.Replace("Å", "A");
+            matchingString = matchingString.Replace("À", "A");
             matchingString = matchingString.Replace("Ö", "O");
             matchingString = matchingString.Replace("Ü", "U");
             matchingString = matchingString.Replace("Ú", "U");
