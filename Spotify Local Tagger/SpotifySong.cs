@@ -63,7 +63,6 @@ namespace Spotify_Local_Tagger
 
                         if (albumPicStream == null)
                         {
-                            Console.WriteLine("Coucou !");
                             Assembly _assembly = Assembly.GetExecutingAssembly();
                             albumPicStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.Resources.localTaggerDefaultAlbum.bmp");
                         }
@@ -95,7 +94,6 @@ namespace Spotify_Local_Tagger
 
                 if (albumPicStream == null)
                 {
-                    Console.WriteLine("Coucou !");
                     Assembly _assembly = Assembly.GetExecutingAssembly();
                     albumPicStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.Resources.localTaggerDefaultAlbum.bmp");
                 }
@@ -255,11 +253,6 @@ namespace Spotify_Local_Tagger
                 byte[] cover = getImage(urls.ElementAt(0));
 
                 albumImageStream = new MemoryStream(cover);
-
-                if(albumImageStream == null)
-                {
-                    Console.WriteLine("Nique ta mère");
-                }
 
                 return albumImageStream;
             }
