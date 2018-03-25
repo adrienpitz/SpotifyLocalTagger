@@ -79,6 +79,12 @@
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
     <Compile Include="LocalSong.cs" />
+    <Compile Include="ManualMergingGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualMergingGUI.Designer.cs">
+      <DependentUpon>ManualMergingGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="MergingFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +93,9 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="GUI.resx">
       <DependentUpon>GUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualMergingGUI.resx">
+      <DependentUpon>ManualMergingGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

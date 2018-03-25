@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Spotify_Local_Tagger
 {
-    class User
+    public class User
     {
         private SpotifyWebAPI spotifyAPI;
         GUI theGui;
@@ -246,6 +246,11 @@ namespace Spotify_Local_Tagger
         public void matchSongs()
         {
             MergingFactory.process(localSongs, spotifySongs);
+        }
+
+        public int getNbLocalSongs()
+        {
+            return localSongs.Count;
         }
     }
 }

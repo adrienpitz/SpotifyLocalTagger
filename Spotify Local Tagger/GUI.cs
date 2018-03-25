@@ -251,6 +251,8 @@ namespace Spotify_Local_Tagger
 
             // Step 3: Open the form for manual matching
 
+            Form manualMergingForm = new ManualMergingGUI(theUser);
+            manualMergingForm.Show();
 
             playlistsListBox.Enabled = true;
             spotifyMusicsListView.Enabled = true;
