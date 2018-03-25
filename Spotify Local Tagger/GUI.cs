@@ -224,14 +224,39 @@ namespace Spotify_Local_Tagger
 
         private void synchronizeButton_Click(object sender, EventArgs e)
         {
+
+            playlistsListBox.Enabled = false;
+            spotifyMusicsListView.Enabled = false;
+            localListView.Enabled = false;
+            browseButton.Enabled = false;
+            folderTextBox.Enabled = false;
+
+            progressBar.Value = 0;
+
             // Step 1: Retrieve all informations from Spotify
+
+            progressBar.PerformStep();
+
             theUser.fillSpotifySongs();
+
+            progressBar.PerformStep();
+
             theUser.fillLocalSongs();
+
+            progressBar.PerformStep();
 
             // Step 2: Matching and tagging
             theUser.matchSongs();
+            progressBar.PerformStep();
 
             // Step 3: Open the form for manual matching
+
+
+            playlistsListBox.Enabled = true;
+            spotifyMusicsListView.Enabled = true;
+            localListView.Enabled = true;
+            browseButton.Enabled = true;
+            folderTextBox.Enabled = true;
 
         }
     }

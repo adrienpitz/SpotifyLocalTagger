@@ -215,8 +215,10 @@
             this.progressBar.BackColor = System.Drawing.Color.Yellow;
             this.progressBar.ForeColor = System.Drawing.Color.Lime;
             this.progressBar.Location = new System.Drawing.Point(3, 623);
+            this.progressBar.Maximum = 4;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(799, 23);
+            this.progressBar.Step = 1;
             this.progressBar.TabIndex = 13;
             // 
             // groupBox1
