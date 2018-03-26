@@ -136,7 +136,7 @@ namespace Spotify_Local_Tagger
             if (localMatchString.Contains(spotifySong.getMatchingString()))
                 hasGoodTitle = true;
 
-            Console.WriteLine("MDDDDDDDD - " + spotifySong.getMatchingString());
+            // Console.WriteLine("MDDDDDDDD - " + spotifySong.getMatchingString());
             
             //3. Reinit matching strings
             spotifySong.initMatchingString();

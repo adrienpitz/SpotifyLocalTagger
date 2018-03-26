@@ -135,6 +135,17 @@ namespace Spotify_Local_Tagger
                 ProcessDirectory(subDirectory, toComplete);
         }
 
+        public List<string> getLocalSongsAsStrings()
+        {
+            List<string> theSongsItems = new List<string>();
+
+            foreach(LocalSong song in localSongs)
+            {
+                theSongsItems.Add(Path.GetFileName(song.getTrack().Name));
+            }
+
+            return theSongsItems;
+        }
 
         public List<ListViewItem> getLocalSongsAsStrings(String pathToFolder)
         {
@@ -164,6 +175,18 @@ namespace Spotify_Local_Tagger
             }
 
             return theSongsItems;
+        }
+
+        public List<string> getSongsOfPlaylistAsStrings()
+        {
+            List<string> theSongs = new List<string>();
+
+            foreach(SpotifySong song in spotifySongs)
+            {
+                theSongs.Add(song.getPerformers()[0] + " - " + song.getTitle());
+            }
+
+            return theSongs;
         }
 
         public List<ListViewItem> getSongsOfPlaylistAsStrings(int playlistId)

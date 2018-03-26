@@ -37,18 +37,18 @@
             this.firstSentenceEntryLabel = new System.Windows.Forms.Label();
             this.numberUnmatchedLabel = new System.Windows.Forms.Label();
             this.mergePanel = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.matchButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.quitButton = new System.Windows.Forms.Button();
-            this.unmergedLocalListBox = new System.Windows.Forms.ListBox();
-            this.unmergedSpotifyListBox = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.matchButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.localListBox = new System.Windows.Forms.ListBox();
+            this.spotifyListBox = new System.Windows.Forms.ListBox();
             this.mainPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.mergePanel.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -145,37 +145,15 @@
             this.mergePanel.Size = new System.Drawing.Size(784, 621);
             this.mergePanel.TabIndex = 1;
             // 
-            // groupBox1
+            // quitButton
             // 
-            this.groupBox1.Controls.Add(this.unmergedLocalListBox);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(368, 511);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Unmatched local songs";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.unmergedSpotifyListBox);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox2.Location = new System.Drawing.Point(404, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(368, 511);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Unmatched Spotify Songs";
-            // 
-            // matchButton
-            // 
-            this.matchButton.Location = new System.Drawing.Point(12, 543);
-            this.matchButton.Name = "matchButton";
-            this.matchButton.Size = new System.Drawing.Size(760, 23);
-            this.matchButton.TabIndex = 2;
-            this.matchButton.Text = "Match";
-            this.matchButton.UseVisualStyleBackColor = true;
-            this.matchButton.Click += new System.EventHandler(this.matchButton_Click);
+            this.quitButton.Location = new System.Drawing.Point(658, 586);
+            this.quitButton.Name = "quitButton";
+            this.quitButton.Size = new System.Drawing.Size(113, 23);
+            this.quitButton.TabIndex = 4;
+            this.quitButton.Text = "Quit";
+            this.quitButton.UseVisualStyleBackColor = true;
+            this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
             // 
             // label2
             // 
@@ -188,35 +166,59 @@
             this.label2.Text = "Select the local song of your choice and its corresponding match in the Spotify s" +
     "ongs, then press \'Match\'";
             // 
-            // quitButton
+            // matchButton
             // 
-            this.quitButton.Location = new System.Drawing.Point(658, 586);
-            this.quitButton.Name = "quitButton";
-            this.quitButton.Size = new System.Drawing.Size(113, 23);
-            this.quitButton.TabIndex = 4;
-            this.quitButton.Text = "Quit";
-            this.quitButton.UseVisualStyleBackColor = true;
-            this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
+            this.matchButton.Location = new System.Drawing.Point(12, 543);
+            this.matchButton.Name = "matchButton";
+            this.matchButton.Size = new System.Drawing.Size(760, 23);
+            this.matchButton.TabIndex = 2;
+            this.matchButton.Text = "Match";
+            this.matchButton.UseVisualStyleBackColor = true;
+            this.matchButton.Click += new System.EventHandler(this.matchButton_Click);
             // 
-            // unmergedLocalListBox
+            // groupBox2
             // 
-            this.unmergedLocalListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.unmergedLocalListBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.unmergedLocalListBox.FormattingEnabled = true;
-            this.unmergedLocalListBox.Location = new System.Drawing.Point(0, 20);
-            this.unmergedLocalListBox.Name = "unmergedLocalListBox";
-            this.unmergedLocalListBox.Size = new System.Drawing.Size(368, 485);
-            this.unmergedLocalListBox.TabIndex = 0;
+            this.groupBox2.Controls.Add(this.spotifyListBox);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox2.Location = new System.Drawing.Point(404, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(368, 511);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Unmatched Spotify Songs";
             // 
-            // unmergedSpotifyListBox
+            // groupBox1
             // 
-            this.unmergedSpotifyListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.unmergedSpotifyListBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.unmergedSpotifyListBox.FormattingEnabled = true;
-            this.unmergedSpotifyListBox.Location = new System.Drawing.Point(0, 20);
-            this.unmergedSpotifyListBox.Name = "unmergedSpotifyListBox";
-            this.unmergedSpotifyListBox.Size = new System.Drawing.Size(368, 485);
-            this.unmergedSpotifyListBox.TabIndex = 1;
+            this.groupBox1.Controls.Add(this.localListBox);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(368, 511);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Unmatched local songs";
+            // 
+            // localListBox
+            // 
+            this.localListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.localListBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.localListBox.FormattingEnabled = true;
+            this.localListBox.HorizontalScrollbar = true;
+            this.localListBox.Location = new System.Drawing.Point(0, 20);
+            this.localListBox.Name = "localListBox";
+            this.localListBox.Size = new System.Drawing.Size(368, 485);
+            this.localListBox.TabIndex = 0;
+            // 
+            // spotifyListBox
+            // 
+            this.spotifyListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.spotifyListBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.spotifyListBox.FormattingEnabled = true;
+            this.spotifyListBox.HorizontalScrollbar = true;
+            this.spotifyListBox.Location = new System.Drawing.Point(-1, 20);
+            this.spotifyListBox.Name = "spotifyListBox";
+            this.spotifyListBox.Size = new System.Drawing.Size(368, 485);
+            this.spotifyListBox.TabIndex = 1;
             // 
             // ManualMergingGUI
             // 
@@ -234,8 +236,8 @@
             this.panel1.PerformLayout();
             this.mergePanel.ResumeLayout(false);
             this.mergePanel.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -255,7 +257,7 @@
         private System.Windows.Forms.Button quitButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button matchButton;
-        private System.Windows.Forms.ListBox unmergedSpotifyListBox;
-        private System.Windows.Forms.ListBox unmergedLocalListBox;
+        private System.Windows.Forms.ListBox spotifyListBox;
+        private System.Windows.Forms.ListBox localListBox;
     }
 }
