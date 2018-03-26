@@ -44,5 +44,16 @@ namespace Spotify_Local_Tagger
             this.Close();
             this.Dispose();
         }
+
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.Dispose();
+        }
+
+        private void matchButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
