@@ -19,7 +19,7 @@ namespace Spotify_Local_Tagger
                 //Iterate through the local songs
                 for(int i=0; i < localSongs.Count; ++i)
                 {
-                    int minLevDistance = 6;
+                    int minLevDistance = 6000;
                     int minId = -1;
                     //Iterate through the spotify songs
                     for(int j=0; j < spotifySongs.Count; ++j)
@@ -35,7 +35,7 @@ namespace Spotify_Local_Tagger
 
 
                    // Console.WriteLine(minLevDistance + " " + localSongs.ElementAt(i).getMatchingString() + " - " + spotifySongs.ElementAt(minId).getMatchingString());
-                    if(minLevDistance <= 10 && minId != -1)
+                    if(minLevDistance <= 5 && minId != -1)
                     {
                         mergeTags(spotifySongs.ElementAt(minId), localSongs.ElementAt(i));
                         spotifySongs.RemoveAt(minId);
@@ -47,7 +47,7 @@ namespace Spotify_Local_Tagger
                 Console.Write(localSongs.Count + " - ");
                 for(int i = localToRemove.Count-1; i >= 0; i--)
                 {
-                    localSongs.RemoveAt(i);
+                    localSongs.RemoveAt(localToRemove.ElementAt(i));
                 }
                 Console.Write(localSongs.Count + "\n");
 
