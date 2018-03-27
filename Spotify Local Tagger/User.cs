@@ -123,7 +123,6 @@ namespace Spotify_Local_Tagger
             return thePlaylists;
         }
 
-
         private void ProcessDirectory(string targetDirectory, List<String> toComplete)
         {
             string[] fileEntries = Directory.GetFiles(targetDirectory, "*.mp3");
