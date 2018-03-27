@@ -270,6 +270,13 @@ namespace Spotify_Local_Tagger
             MergingFactory.process(localSongs, spotifySongs);
         }
 
+        public void matchSongs(int idLocal, int idSpotify)
+        {
+            MergingFactory.mergeTags(spotifySongs.ElementAt(idSpotify), localSongs.ElementAt(idLocal));
+            spotifySongs.RemoveAt(idSpotify);
+            localSongs.RemoveAt(idLocal);
+        }
+
         public int getNbLocalSongs()
         {
             return localSongs.Count;

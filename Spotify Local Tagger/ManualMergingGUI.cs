@@ -104,7 +104,12 @@ namespace Spotify_Local_Tagger
 
         private void matchButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(localListBox.SelectedIndex + "-" + spotifyListBox.SelectedIndex);
+            if(!(localListBox.SelectedIndex == -1 || spotifyListBox.SelectedIndex == -1))
+            {
+                theUser.matchSongs(localListBox.SelectedIndex, spotifyListBox.SelectedIndex);
+                populateLocalSongsListView();
+                populateSpotifySongsListView();
+            }
         }
     }
 }

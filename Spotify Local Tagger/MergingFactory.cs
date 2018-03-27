@@ -150,7 +150,7 @@ namespace Spotify_Local_Tagger
             return false;
         }
 
-        private static void mergeTags(SpotifySong spotifySong, LocalSong localSong)
+        public static void mergeTags(SpotifySong spotifySong, LocalSong localSong)
         {
             //Retrieve taglib ref
             TagLib.File localFile = localSong.getTrack();
