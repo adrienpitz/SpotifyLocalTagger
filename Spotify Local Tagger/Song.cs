@@ -198,6 +198,7 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace(",", string.Empty);
             matchingString = matchingString.Replace("\"", string.Empty);
             matchingString = matchingString.Replace("*", string.Empty);
+            matchingString = matchingString.Replace("~", string.Empty);
         }
 
         private void replaceAnd()

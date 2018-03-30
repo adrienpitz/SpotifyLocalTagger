@@ -73,7 +73,7 @@ namespace Spotify_Local_Tagger
                 Console.Write(localSongs.Count + " - ");
                 for (int i = localToRemove.Count - 1; i >= 0; i--)
                 {
-                    localSongs.RemoveAt(i);
+                    localSongs.RemoveAt(localToRemove.ElementAt(i));
                 }
                 Console.Write(localSongs.Count + "\n");
 

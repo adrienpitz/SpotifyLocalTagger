@@ -121,7 +121,6 @@ namespace Spotify_Local_Tagger
             foreach (SimpleArtist performer in track.Track.Artists)
             {
                 performers.Add(performer.Name);
-                //Console.WriteLine(performer.Name);
             }
 
             return performers.ToArray();

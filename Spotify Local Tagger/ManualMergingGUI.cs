@@ -109,6 +109,13 @@ namespace Spotify_Local_Tagger
                 theUser.matchSongs(localListBox.SelectedIndex, spotifyListBox.SelectedIndex);
                 populateLocalSongsListView();
                 populateSpotifySongsListView();
+
+                if(localListBox.Items.Count == 0 || spotifyListBox.Items.Count == 0)
+                {
+                    this.Close();
+                    this.Dispose();
+                }
+
             }
         }
     }
