@@ -59,7 +59,7 @@ namespace Spotify_Local_Tagger
                 {
                     for(int j=0; j < spotifySongs.Count; ++j)
                     {
-                        if(compareByElements(spotifySongs.ElementAt(j), localSongs.ElementAt(i)))
+                        if(compareByElements(spotifySongs.ElementAt(j), localSongs.ElementAt(i)) == 1)
                         {
                             mergeTags(spotifySongs.ElementAt(j), localSongs.ElementAt(i));
                             spotifySongs.RemoveAt(j);
@@ -110,7 +110,13 @@ namespace Spotify_Local_Tagger
             return d[n, m];
         }
 
-        private static bool compareByElements(SpotifySong spotifySong, LocalSong localSong)
+        /**
+         * returns:
+         *  - 0: spotify song does not match the local song
+         *  - 1: spotify song does match the local song
+         *  - 2: spotify song has the same title than the local song
+         **/
+        private static int compareByElements(SpotifySong spotifySong, LocalSong localSong)
         {
 
             //We have a score and we evaluate if this is sufficiently good to merge the two songs
@@ -118,14 +124,42 @@ namespace Spotify_Local_Tagger
             //1. Look for the artists
             string[] performers = spotifySong.getPerformers();
             int nbOK = 0;
-            foreach(string performer in performers)
+
+            if(localSong.getTrack().Tag.Performers != null && localSong.getTrack().Tag.Performers.Count() != 0)
             {
-                spotifySong.initMatchingString(performer);
-                spotifySong.processMatchingString();
-                if (localMatchString.Contains(spotifySong.getMatchingString()))
+                foreach(string performer in performers)
                 {
-                    nbOK++;
-                    break;
+                    spotifySong.initMatchingString(performer);
+                    spotifySong.processMatchingString();
+                    
+                    foreach(string performerLocal in localSong.getTrack().Tag.Performers)
+                    {
+                        localSong.initMatchingString(performerLocal);
+                        localSong.processMatchingString();
+
+                        if (localSong.getMatchingString().Contains(spotifySong.getMatchingString())){
+                            nbOK++;
+                            break;
+                        }
+
+                    }
+
+                    if (nbOK > 0)
+                        break;
+                }
+            }
+
+            if(localSong.getTrack().Tag.Performers == null || localSong.getTrack().Tag.Performers.Count() == 0 || nbOK == 0)
+            {
+                foreach (string performer in performers)
+                {
+                    spotifySong.initMatchingString(performer);
+                    spotifySong.processMatchingString();
+                    if (localMatchString.Contains(spotifySong.getMatchingString()))
+                    {
+                        nbOK++;
+                        break;
+                    }
                 }
             }
 
@@ -134,20 +168,23 @@ namespace Spotify_Local_Tagger
             spotifySong.initMatchingString(spotifySong.getTitle());
             spotifySong.processMatchingString();
             if (localMatchString.Contains(spotifySong.getMatchingString()))
+            {
+                Console.WriteLine("Coucou vous ! " + localMatchString);
                 hasGoodTitle = true;
+            }
 
-            // Console.WriteLine("MDDDDDDDD - " + spotifySong.getMatchingString());
-            
             //3. Reinit matching strings
             spotifySong.initMatchingString();
             spotifySong.processMatchingString();
+            localSong.initMatchingString(localMatchString);
+
             if (nbOK > 0 && hasGoodTitle)
             {
-                Console.WriteLine(spotifySong.getMatchingString() + " -- " + localSong.getMatchingString());
-                return true;
+                //Console.WriteLine(spotifySong.getMatchingString() + " -- " + localSong.getMatchingString());
+                return 1;
             }
 
-            return false;
+            return 0;
         }
 
         public static void mergeTags(SpotifySong spotifySong, LocalSong localSong)
@@ -163,7 +200,6 @@ namespace Spotify_Local_Tagger
             localFile.Tag.BeatsPerMinute = 320;
             localFile.Tag.Comment = "Spotify Local Tagger by Adrien P.";
             localFile.Tag.Disc = spotifySong.getDiskNumber();
-            localFile.Tag.Performers = spotifySong.getPerformers();
             localFile.Tag.Title = spotifySong.getTitle();
             localFile.Tag.Track = spotifySong.getTrackNumber();
             localFile.Tag.TrackCount = spotifySong.getTrackNumber();

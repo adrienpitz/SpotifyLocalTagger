@@ -23,6 +23,14 @@ namespace Spotify_Local_Tagger
             matchingString = Path.GetFileNameWithoutExtension(track.Name);
         }
 
+        public void initMatchingString(string toPut)
+        {
+            if(toPut != null)
+            {
+                matchingString = toPut;
+            }
+        }
+
         public TagLib.File getTrack()
         {
             return track;
