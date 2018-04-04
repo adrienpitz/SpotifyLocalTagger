@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.credentialsLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
@@ -232,7 +232,7 @@
             this.groupBox1.Size = new System.Drawing.Size(450, 366);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Local musics in xxx";
+            this.groupBox1.Text = "Specify the local musics folder";
             // 
             // browseButton
             // 
@@ -299,7 +299,7 @@
             this.Album});
             this.spotifyMusicsListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.spotifyMusicsListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 40);
             this.spotifyMusicsListView.Name = "spotifyMusicsListView";
             this.spotifyMusicsListView.Size = new System.Drawing.Size(450, 317);
