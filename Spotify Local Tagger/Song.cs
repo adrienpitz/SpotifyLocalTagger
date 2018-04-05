@@ -158,34 +158,39 @@ namespace Spotify_Local_Tagger
 
         private void removeDigitBeforeSong()
         {
-            Regex myRegex = new Regex(@"^[0-9]+");
+            Regex myRegex = new Regex(@"^[0-9]+$");
 
             int indexOfDash = matchingString.IndexOf("-");
 
             // Si il y a une - dans la string
-            if(indexOfDash > 0)
+            if (indexOfDash > 0)
             {
 
                 // On check bien si ce qu'il y a entre le début de la phrase et le '-' est un chiffre
                 string substr = matchingString.Substring(0, indexOfDash);
 
                 if (myRegex.IsMatch(substr))
-                    matchingString = matchingString.Remove(0, indexOfDash + 1);
+                {
+                     matchingString = matchingString.Remove(0, indexOfDash + 1);
+                }
 
             }
 
             int indexOfPoint = matchingString.IndexOf(".");
 
             // Si il y a un . dans la string
-            if(indexOfPoint > 0)
+            if (indexOfPoint > 0)
             {
 
                 // On check bien si ce qu'il y a entre le début de la phrase et le '.' est un chiffre
                 string substr = matchingString.Substring(0, indexOfPoint);
 
                 if (myRegex.IsMatch(substr))
-                    matchingString = matchingString.Remove(0, indexOfPoint + 1);
+                {
+                     matchingString = matchingString.Remove(0, indexOfPoint + 1);
+                }
             }
+
         }
 
         private void deletePonctuation()
@@ -245,6 +250,29 @@ namespace Spotify_Local_Tagger
                 {
                     matchingString = matchingString.Remove(lastIndex);
                     return;
+                }
+
+                if (toAnalyze.Contains("EDIT"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
+                    return;
+                }
+
+                if (toAnalyze.Contains("RADIO"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
+                    return;
+                }
+
+                if (toAnalyze.Contains("REMIX"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
+                    return;
+                }
+
+                if (toAnalyze.Contains("FROM"))
+                {
+                    matchingString = matchingString.Remove(lastIndex);
                 }
 
             }
