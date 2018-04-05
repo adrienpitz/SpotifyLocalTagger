@@ -121,6 +121,8 @@ namespace Spotify_Local_Tagger
 
             //We have a score and we evaluate if this is sufficiently good to merge the two songs
             string localMatchString = localSong.getMatchingString();
+            string spotifyMatchString = spotifySong.getMatchingString();
+
             //1. Look for the artists
             string[] performers = spotifySong.getPerformers();
             int nbOK = 0;
@@ -174,8 +176,9 @@ namespace Spotify_Local_Tagger
             }
 
             //3. Reinit matching strings
-            spotifySong.initMatchingString();
-            spotifySong.processMatchingString();
+            /**spotifySong.initMatchingString();
+            spotifySong.processMatchingString();**/
+            spotifySong.initMatchingString(spotifyMatchString);
             localSong.initMatchingString(localMatchString);
 
             if (nbOK > 0 && hasGoodTitle)
