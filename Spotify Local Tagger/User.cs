@@ -60,7 +60,7 @@ namespace Spotify_Local_Tagger
 
         public bool isConnexionOK()
         {
-            return spotifyAPI == null;
+            return spotifyAPI != null;
         }
 
         private List<SimplePlaylist> getPlaylists()

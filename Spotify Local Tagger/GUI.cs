@@ -16,18 +16,25 @@ using System.Reflection;
 
 namespace Spotify_Local_Tagger
 {
+    /// <summary>
+    /// Interaction between the user and the main Form,
+    /// diplaying the playlists and the songs from both Spotify and local source.
+    /// </summary>
     public partial class GUI : Form
     {
 
+        /// <summary>
+        /// Informations about the user
+        /// </summary>
         User theUser;
+
         Assembly _assembly;
         Stream _spotIcoStream;
         Stream _localIcoStream;
 
-        /**
-         * Constructor
-         * 
-         **/
+        /// <summary>
+        /// Initializes the Form and the resources used as icons.
+        /// </summary>
         public GUI()
         {
             InitializeComponent();
@@ -51,6 +58,9 @@ namespace Spotify_Local_Tagger
             
         }
 
+        /// <summary>
+        /// Set the icon of local songs to be desplayed before each local song
+        /// </summary>
         private void initLocalSongsListView()
         {
             ImageList imageListSmall = new ImageList();
@@ -58,30 +68,28 @@ namespace Spotify_Local_Tagger
             localListView.LargeImageList = imageListSmall;
         }
 
-        /**
-         * loginCredsButton_Click : Triggered when login button with credentials is pressed
-         * 
-         * sender: the object sending the signal
-         * e: arguments sended
-         * 
-         **/
+        /// <summary>
+        /// Triggers the connection by login/password
+        /// </summary>
+        /// <param name="sender">The button instance</param>
+        /// <param name="e">The event</param>
+        /// <remarks> API doesn't provide this functionality yet </remarks>
         private void loginCredsButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        /**
-         * loginWebButton_Click : Triggered when login button on web page is pressed
-         * 
-         * sender: the object sending the signal
-         * e: arguments sended
-         **/
+        /// <summary>
+        /// Triggers the connection with the web page
+        /// </summary>
+        /// <param name="sender">The button instance</param>
+        /// <param name="e">The event</param>
         private void loginWebButton_Click(object sender, EventArgs e)
         {
 
             theUser = new User(this);
 
-            if(theUser.isConnexionOK())
+            if(!theUser.isConnexionOK())
             {
                 MessageBox.Show("Retrieving informations failed");
             }else
@@ -94,15 +102,18 @@ namespace Spotify_Local_Tagger
 
         }
 
+        /// <summary>
+        /// Opens a box showing <c>theText</c>.
+        /// </summary>
+        /// <param name="theText">The text to display</param>
         public void showMessageBox(String theText)
         {
             MessageBox.Show(theText);
         }
 
-        /**
-         * mainPanelInit: Initializes the graphical components of the main menu
-         * 
-         **/
+        /// <summary>
+        /// Initializes the graphical components of the main menu.
+        /// </summary>
         private void mainPanelInit()
         {
             theUser.setProfilePic(profilePictureBox);
@@ -114,10 +125,9 @@ namespace Spotify_Local_Tagger
             setSongsInBox();
         }
 
-        /**
-         * setPlaylistsInBox: Fill the playlist list box
-         * 
-         **/
+        /// <summary>
+        /// Fills the playlist list box
+        /// </summary>
         private void setPlaylistsInBox()
         {
             List<String> thePlaylists = theUser.getPlaylistsAsStrings();
@@ -133,10 +143,10 @@ namespace Spotify_Local_Tagger
                 playlistsListBox.SetSelected(0, true);
         }
 
-        /**
-         * setSongsInBox: Fill the songs list box (at initialization)
-         * 
-         **/
+        /// <summary>
+        /// Initializes the Spotify songs list with the first playlist in the list
+        /// </summary>
+        /// <remarks>Used at initialization only</remarks>
         private void setSongsInBox()
         {
             if(theUser.getNbPlaylists() > 0)
@@ -161,6 +171,11 @@ namespace Spotify_Local_Tagger
             }
         }
 
+        /// <summary>
+        /// Updates the list of Spotify songs in the box when a playlist is selected
+        /// </summary>
+        /// <param name="sender">The button instance</param>
+        /// <param name="e">The event</param>
         private void playlistsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -185,6 +200,12 @@ namespace Spotify_Local_Tagger
 
         }
 
+        /// <summary>
+        /// Opens a file navigator in which the user will specify the file in
+        /// which his/her local songs are
+        /// </summary>
+        /// <param name="sender">The button instance </param>
+        /// <param name="e">The event</param>
         private void browseButton_Click(object sender, EventArgs e)
         {
             String selectedPath = "";
@@ -222,6 +243,15 @@ namespace Spotify_Local_Tagger
 
         }
 
+        /// <summary>
+        /// Triggers the synchronisation between the Spotify songs and the Local songs
+        /// </summary>
+        /// <param name="sender">The button instance</param>
+        /// <param name="e">The event</param>
+        /// <remarks>
+        /// If all local songs did not have a match, a manual merging operation will
+        /// be triggered
+        /// </remarks>
         private void synchronizeButton_Click(object sender, EventArgs e)
         {
 
