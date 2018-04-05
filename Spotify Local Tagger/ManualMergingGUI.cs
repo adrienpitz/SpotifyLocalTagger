@@ -17,9 +17,6 @@ namespace Spotify_Local_Tagger
     {
 
         User theUser;
-        Assembly _assembly;
-        Stream _spotIcoStream;
-        Stream _localIcoStream;
 
         public ManualMergingGUI()
         {
@@ -37,17 +34,6 @@ namespace Spotify_Local_Tagger
             int nLocalSongs = theUser.getNbLocalSongs();
             numberUnmatchedLabel.Text = nLocalSongs + "";
 
-            try
-            {
-                _assembly = Assembly.GetExecutingAssembly();
-                _spotIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.Resources.spotFileIco.bmp");
-                _localIcoStream = _assembly.GetManifestResourceStream("Spotify_Local_Tagger.Resources.musicFile.bmp");
-            }
-            catch
-            {
-                MessageBox.Show("Error accessing ressources !");
-            }
-
             populateLocalSongsListView();
             populateSpotifySongsListView();
         }
@@ -55,9 +41,6 @@ namespace Spotify_Local_Tagger
         private void populateLocalSongsListView()
         {
             localListBox.Items.Clear();
-
-            ImageList imageListSmall = new ImageList();
-            imageListSmall.Images.Add(new Bitmap(_localIcoStream));
 
             List<string> theItems = theUser.getLocalSongsAsStrings();
 
@@ -71,9 +54,6 @@ namespace Spotify_Local_Tagger
         private void populateSpotifySongsListView()
         {
             spotifyListBox.Items.Clear();
-
-            ImageList imageListSmall = new ImageList();
-            imageListSmall.Images.Add(new Bitmap(_spotIcoStream));
 
             List<string> theItems = theUser.getSongsOfPlaylistAsStrings();
 

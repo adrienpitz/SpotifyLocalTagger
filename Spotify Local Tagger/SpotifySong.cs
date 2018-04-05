@@ -234,6 +234,12 @@ namespace Spotify_Local_Tagger
             return albumCoverPictFrame;
         }
 
+        public void processMatchingStringWithTitle()
+        {
+            initMatchingString(getTitle());
+            processMatchingStringTitle();
+        }
+
         private class GoogleImageAlbum
         {
 

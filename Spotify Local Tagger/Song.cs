@@ -39,11 +39,29 @@ namespace Spotify_Local_Tagger
             deletePonctuation();
             replaceAnd();
             deleteSlash();
-            removeLastSentence();
+            removeLastSentence(false);
             deleteDash();
             deleteLyrics();
-            //TODO : Remove
-            //Console.WriteLine(matchingString);
+        }
+
+        public void processMatchingStringTitle()
+        {
+            deleteSpaces();
+            deleteUnderScores();
+            deleteApostrophe();
+            deleteBetweenParenthesis();
+            deleteBetweenBrackets();
+
+            setToUpperCase();
+            replaceAccents();
+            deleteFeaturings();
+            removeDigitBeforeSong();
+            deletePonctuation();
+            replaceAnd();
+            deleteSlash();
+            removeLastSentence(true);
+            deleteDash();
+            deleteLyrics();
         }
 
         private void deleteSpaces()
@@ -211,14 +229,21 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("&", "AND");
         }
 
-        private void removeLastSentence()
+        private void removeLastSentence(bool isOnlyTitle)
         {
             int lastIndex = matchingString.LastIndexOf("-");
-            int firstIndex = matchingString.IndexOf("-");
+            int firstIndex = -1;
 
-            //If we have at least 2 '-' in the string
-            if(lastIndex != firstIndex)
+            if (!isOnlyTitle)
             {
+                firstIndex = matchingString.IndexOf("-");
+                if (firstIndex == lastIndex)
+                    return;
+            }
+
+            if (lastIndex != -1)
+            {
+
                 string toAnalyze = matchingString.Substring(lastIndex);
 
 
@@ -274,9 +299,7 @@ namespace Spotify_Local_Tagger
                 {
                     matchingString = matchingString.Remove(lastIndex);
                 }
-
             }
-
         }
 
         private void deleteDash()

@@ -211,7 +211,7 @@ namespace Spotify_Local_Tagger
             {
                 folderTextBox.Text = selectedPath;
 
-                groupBox1.Text = new DirectoryInfo(selectedPath).Name;
+                groupBox1.Text = "Local musics in " + new DirectoryInfo(selectedPath).Name;
 
                 List<ListViewItem> newItems = theUser.getLocalSongsAsStrings(folderTextBox.Text);
                 foreach (ListViewItem item in newItems)
@@ -250,7 +250,6 @@ namespace Spotify_Local_Tagger
             progressBar.PerformStep();
 
             // Step 3: Open the form for manual matching
-
             Form manualMergingForm = new ManualMergingGUI(theUser);
             manualMergingForm.Show();
 

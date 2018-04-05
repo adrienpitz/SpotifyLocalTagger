@@ -59,12 +59,17 @@ namespace Spotify_Local_Tagger
                 {
                     for(int j=0; j < spotifySongs.Count; ++j)
                     {
-                        if(compareByElements(spotifySongs.ElementAt(j), localSongs.ElementAt(i)) == 1)
+                        int resultCompareElements = compareByElements(spotifySongs.ElementAt(j), localSongs.ElementAt(i));
+                        if (resultCompareElements == 1)
                         {
                             mergeTags(spotifySongs.ElementAt(j), localSongs.ElementAt(i));
                             spotifySongs.RemoveAt(j);
                             localToRemove.Add(i);
                             break;
+
+                        }else if (resultCompareElements == 2)
+                        {
+                            Console.WriteLine(localSongs.ElementAt(i).getTrack().Name + " could be matched by suggestion");
                         }
                     }
                 }
@@ -165,13 +170,15 @@ namespace Spotify_Local_Tagger
                 }
             }
 
+            localSong.initMatchingString(localMatchString);
+
             //2. Look for the title
             bool hasGoodTitle = false;
-            spotifySong.initMatchingString(spotifySong.getTitle());
-            spotifySong.processMatchingString();
+            /*spotifySong.initMatchingString(spotifySong.getTitle());
+            spotifySong.processMatchingString();*/
+            spotifySong.processMatchingStringWithTitle();
             if (localMatchString.Contains(spotifySong.getMatchingString()))
             {
-                Console.WriteLine("Coucou vous ! " + localMatchString);
                 hasGoodTitle = true;
             }
 
@@ -186,6 +193,9 @@ namespace Spotify_Local_Tagger
                 //Console.WriteLine(spotifySong.getMatchingString() + " -- " + localSong.getMatchingString());
                 return 1;
             }
+
+            if (hasGoodTitle)
+                return 2;
 
             return 0;
         }
