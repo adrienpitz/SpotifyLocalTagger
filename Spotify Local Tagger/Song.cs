@@ -41,7 +41,7 @@ namespace Spotify_Local_Tagger
         }
 
         /// <summary>
-        /// Performs the epuration of the matching string
+        /// Performs the epuration of the matching string.
         /// </summary>
         public void processMatchingString()
         {
@@ -65,7 +65,7 @@ namespace Spotify_Local_Tagger
 
         /// <summary>
         /// Performs the epuration of the matching string
-        /// which corresponds to only the title of the song
+        /// which corresponds to only the title of the song.
         /// </summary>
         public void processMatchingStringTitle()
         {
@@ -88,28 +88,40 @@ namespace Spotify_Local_Tagger
         }
 
         /// <summary>
-        /// Delete all instance of ' ' in the matching string
+        /// Delete all instance of ' ' in the matching string.
         /// </summary>
         private void deleteSpaces()
         {
             matchingString = matchingString.Replace(" ", string.Empty);
         }
 
+        /// <summary>
+        /// Delete all instance of '_' in the matching string.
+        /// </summary>
         private void deleteUnderScores()
         {
             matchingString = matchingString.Replace("_", string.Empty);
         }
 
+        /// <summary>
+        /// Delete all instance of ''' in the matching string.
+        /// </summary>
         private void deleteApostrophe()
         {
             matchingString = matchingString.Replace("'", string.Empty);
         }
 
+        /// <summary>
+        /// Sets the matching string to uppercase.
+        /// </summary>
         private void setToUpperCase()
         {
             matchingString = matchingString.ToUpper();
         }
 
+        /// <summary>
+        /// Replace letters with accents by their corresponding alphabet letter.
+        /// </summary>
         private void replaceAccents()
         {
             matchingString = matchingString.Replace("É", "E");
@@ -139,11 +151,18 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("Ò", "O");
         }
 
+        /// <summary>
+        /// Delete each sentence between parenthesis in the matching string.
+        /// </summary>
         private void deleteBetweenParenthesis()
         {
             while (deleteParenthesis()) { }
         }
 
+        /// <summary>
+        /// Delete a sentence between parenthesis in the matching string if any.
+        /// </summary>
+        /// <returns>true if a phrase between parenthesis is present, false otherwise.</returns>
         private bool deleteParenthesis()
         {
             int indexOfFirst = matchingString.IndexOf('(');
@@ -161,11 +180,18 @@ namespace Spotify_Local_Tagger
             return true;
         }
 
+        /// <summary>
+        /// Delete each sentence between brackets in the matching string.
+        /// </summary>
         private void deleteBetweenBrackets()
         {
             while (deleteBrackets()) { }
         }
 
+        /// <summary>
+        /// Delete a sentence between brackets in the matching string if any.
+        /// </summary>
+        /// <returns>true if a phrase between brackets is present, false otherwise</returns>
         private bool deleteBrackets()
         {
             int indexOfFirst = matchingString.IndexOf('[');
@@ -184,12 +210,18 @@ namespace Spotify_Local_Tagger
             return true;
         }
 
+        /// <summary>
+        /// Delete each occurences of '/' in the matching string.
+        /// </summary>
         private void deleteSlash()
         {
             //TODO: See if it is better than MP3ModifierFactory
             matchingString = matchingString.Replace("/", string.Empty);
         }
 
+        /// <summary>
+        /// Delete 'ft' and 'featuring' terms in the matching string.
+        /// </summary>
         private void deleteFeaturings()
         {
             matchingString = matchingString.Replace("FEAT.", string.Empty);
@@ -200,6 +232,10 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("FEATURING", string.Empty);
         }
 
+        /// <summary>
+        /// Remove the digit before a song, separated from the rest of 
+        /// the string with a '.' or a '-'.
+        /// </summary>
         private void removeDigitBeforeSong()
         {
             Regex myRegex = new Regex(@"^[0-9]+$");
@@ -237,6 +273,9 @@ namespace Spotify_Local_Tagger
 
         }
 
+        /// <summary>
+        /// Delete each form of ponctuation in matching string.
+        /// </summary>
         private void deletePonctuation()
         {
             matchingString = matchingString.Replace(".", string.Empty);
@@ -250,11 +289,22 @@ namespace Spotify_Local_Tagger
             matchingString = matchingString.Replace("~", string.Empty);
         }
 
+        /// <summary>
+        /// Replaces occurences of '&' by 'and' in the matching string.
+        /// </summary>
         private void replaceAnd()
         {
             matchingString = matchingString.Replace("&", "AND");
         }
 
+        /// <summary>
+        /// Removes last sentence of the matching string (designed by a '-')
+        /// if it contains a special term.
+        /// </summary>
+        /// <param name="isOnlyTitle">If the matching string only corresponds to title.</param>
+        /// <remarks>
+        /// If the matching string is the title, we don't testify if there is more than two '-'.
+        /// </remarks>
         private void removeLastSentence(bool isOnlyTitle)
         {
             int lastIndex = matchingString.LastIndexOf("-");
@@ -328,11 +378,17 @@ namespace Spotify_Local_Tagger
             }
         }
 
+        /// <summary>
+        /// Delete all instance of '-' in the matching string.
+        /// </summary>
         private void deleteDash()
         {
             matchingString = matchingString.Replace("-", string.Empty);
         }
 
+        /// <summary>
+        /// Delete the word "lyrics" from the matching string if present.
+        /// </summary>
         private void deleteLyrics()
         {
             matchingString = matchingString.Replace("LYRICS", string.Empty);
