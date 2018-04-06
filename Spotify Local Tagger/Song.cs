@@ -7,23 +7,42 @@ using System.Threading.Tasks;
 
 namespace Spotify_Local_Tagger
 {
+    /// <summary>
+    /// A general song for the local analyzer
+    /// </summary>
     abstract class Song
     {
 
+        /// <summary>
+        /// String used as the basis of comparison for matching songs.
+        /// </summary>
         protected String matchingString;
 
+        /// <summary>
+        /// Set the matching string to empty.
+        /// </summary>
         public Song()
         {
             matchingString = String.Empty;
         }
 
+        /// <summary>
+        /// Initializes the matching string.
+        /// </summary>
         public abstract void initMatchingString();
 
+        /// <summary>
+        /// Getter for the matching string.
+        /// </summary>
+        /// <returns>The matching string</returns>
         public String getMatchingString()
         {
             return matchingString;
         }
 
+        /// <summary>
+        /// Performs the epuration of the matching string
+        /// </summary>
         public void processMatchingString()
         {
             deleteSpaces();
@@ -44,6 +63,10 @@ namespace Spotify_Local_Tagger
             deleteLyrics();
         }
 
+        /// <summary>
+        /// Performs the epuration of the matching string
+        /// which corresponds to only the title of the song
+        /// </summary>
         public void processMatchingStringTitle()
         {
             deleteSpaces();
@@ -64,6 +87,9 @@ namespace Spotify_Local_Tagger
             deleteLyrics();
         }
 
+        /// <summary>
+        /// Delete all instance of ' ' in the matching string
+        /// </summary>
         private void deleteSpaces()
         {
             matchingString = matchingString.Replace(" ", string.Empty);

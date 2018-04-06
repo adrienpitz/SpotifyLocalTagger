@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace Spotify_Local_Tagger
 {
     /// <summary>
-    /// Interaction between the user and the manual merging GUI Form
+    /// Interaction between the user and the manual merging Form
     /// </summary>
     public partial class ManualMergingGUI : Form
     {
