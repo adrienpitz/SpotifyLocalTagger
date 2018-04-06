@@ -26,7 +26,7 @@ namespace Spotify_Local_Tagger
         /// <summary>
         /// Informations about the user
         /// </summary>
-        User theUser;
+        User _theUser;
 
         Assembly _assembly;
         Stream _spotIcoStream;
@@ -87,9 +87,9 @@ namespace Spotify_Local_Tagger
         private void loginWebButton_Click(object sender, EventArgs e)
         {
 
-            theUser = new User(this);
+            _theUser = new User(this);
 
-            if(!theUser.isConnexionOK())
+            if(!_theUser.isConnexionOK())
             {
                 MessageBox.Show("Retrieving informations failed");
             }else
@@ -116,11 +116,11 @@ namespace Spotify_Local_Tagger
         /// </summary>
         private void mainPanelInit()
         {
-            theUser.setProfilePic(profilePictureBox);
-            nameLabel.Text = theUser.getName();
-            countryLabel.Text = theUser.getCountry();
-            followersLabel.Text = theUser.getFollowers();
-            playlistsGroupBox.Text = "Playlists - " + theUser.getNbPlaylists();
+            _theUser.setProfilePic(profilePictureBox);
+            nameLabel.Text = _theUser.getName();
+            countryLabel.Text = _theUser.getCountry();
+            followersLabel.Text = _theUser.getFollowers();
+            playlistsGroupBox.Text = "Playlists - " + _theUser.getNbPlaylists();
             setPlaylistsInBox();
             setSongsInBox();
         }
@@ -130,7 +130,7 @@ namespace Spotify_Local_Tagger
         /// </summary>
         private void setPlaylistsInBox()
         {
-            List<String> thePlaylists = theUser.getPlaylistsAsStrings();
+            List<String> thePlaylists = _theUser.getPlaylistsAsStrings();
 
             playlistsListBox.Items.Clear();
 
@@ -149,7 +149,7 @@ namespace Spotify_Local_Tagger
         /// <remarks>Used at initialization only</remarks>
         private void setSongsInBox()
         {
-            if(theUser.getNbPlaylists() > 0)
+            if(_theUser.getNbPlaylists() > 0)
             {
                 spotifyMusicsListView.Items.Clear();
                 playlistNotUserLabel.Text = "";
@@ -157,7 +157,7 @@ namespace Spotify_Local_Tagger
                 ImageList imageListSmall = new ImageList();
                 imageListSmall.Images.Add(new Bitmap(_spotIcoStream));
 
-                List<ListViewItem> theItems = theUser.getSongsOfPlaylistAsStrings(0);
+                List<ListViewItem> theItems = _theUser.getSongsOfPlaylistAsStrings(0);
 
                 if (theItems.Count == 0)
                     playlistNotUserLabel.Text = "This playlist can't be read as it is not yours";
@@ -188,7 +188,7 @@ namespace Spotify_Local_Tagger
 
             spotifyMusicsListView.Items.Clear();
             playlistNotUserLabel.Text = "";
-            List<ListViewItem> newItems = theUser.getSongsOfPlaylistAsStrings(playlistsListBox.SelectedIndex);
+            List<ListViewItem> newItems = _theUser.getSongsOfPlaylistAsStrings(playlistsListBox.SelectedIndex);
 
             if (newItems.Count == 0)
                 playlistNotUserLabel.Text = "This playlist can't be read as it is not yours";
@@ -234,7 +234,7 @@ namespace Spotify_Local_Tagger
 
                 groupBox1.Text = "Local musics in " + new DirectoryInfo(selectedPath).Name;
 
-                List<ListViewItem> newItems = theUser.getLocalSongsAsStrings(folderTextBox.Text);
+                List<ListViewItem> newItems = _theUser.getLocalSongsAsStrings(folderTextBox.Text);
                 foreach (ListViewItem item in newItems)
                 {
                     localListView.Items.Add(item);
@@ -267,20 +267,20 @@ namespace Spotify_Local_Tagger
 
             progressBar.PerformStep();
 
-            theUser.fillSpotifySongs();
+            _theUser.fillSpotifySongs();
 
             progressBar.PerformStep();
 
-            theUser.fillLocalSongs();
+            _theUser.fillLocalSongs();
 
             progressBar.PerformStep();
 
             // Step 2: Matching and tagging
-            theUser.matchSongs();
+            _theUser.matchSongs();
             progressBar.PerformStep();
 
             // Step 3: Open the form for manual matching
-            Form manualMergingForm = new ManualMergingGUI(theUser);
+            Form manualMergingForm = new ManualMergingGUI(_theUser);
             manualMergingForm.Show();
 
             playlistsListBox.Enabled = true;
