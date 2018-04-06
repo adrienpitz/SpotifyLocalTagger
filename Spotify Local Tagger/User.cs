@@ -14,26 +14,26 @@ namespace Spotify_Local_Tagger
 {
     public class User
     {
-        private SpotifyWebAPI spotifyAPI;
-        GUI theGui;
-        PrivateProfile profile;
-        List<SimplePlaylist> playlists;
-        List<PlaylistTrack> spotifyTrackSet;
-        List<TagLib.File> mp3TrackSet;
+        private SpotifyWebAPI _spotifyAPI;
+        GUI _theGui;
+        PrivateProfile _profile;
+        List<SimplePlaylist> _playlists;
+        List<PlaylistTrack> _spotifyTrackSet;
+        List<TagLib.File> _mp3TrackSet;
 
-        List<LocalSong> localSongs;
-        List<SpotifySong> spotifySongs;
+        List<LocalSong> _localSongs;
+        List<SpotifySong> _spotifySongs;
 
 
         public User(GUI gui)
         {
-            theGui = gui;
+            _theGui = gui;
             connect();
-            mp3TrackSet = new List<TagLib.File>();
-            spotifyTrackSet = new List<PlaylistTrack>();
-            localSongs = new List<LocalSong>();
-            spotifySongs = new List<SpotifySong>();
-            while(spotifyAPI == null) { }
+            _mp3TrackSet = new List<TagLib.File>();
+            _spotifyTrackSet = new List<PlaylistTrack>();
+            _localSongs = new List<LocalSong>();
+            _spotifySongs = new List<SpotifySong>();
+            while(_spotifyAPI == null) { }
             initComponents();
 
         }
@@ -44,33 +44,33 @@ namespace Spotify_Local_Tagger
 
             try
             {
-                spotifyAPI = await webApiFactory.GetWebApi();
+                _spotifyAPI = await webApiFactory.GetWebApi();
             }
             catch (Exception ex)
             {
-                theGui.showMessageBox(ex.Message);
+                _theGui.showMessageBox(ex.Message);
             }
         }
 
         private void initComponents()
         {
-            profile = spotifyAPI.GetPrivateProfile();
-            playlists = getPlaylists();
+            _profile = _spotifyAPI.GetPrivateProfile();
+            _playlists = getPlaylists();
         }
 
         public bool isConnexionOK()
         {
-            return spotifyAPI != null;
+            return _spotifyAPI != null;
         }
 
         private List<SimplePlaylist> getPlaylists()
         {
-            Paging<SimplePlaylist> playlists = spotifyAPI.GetUserPlaylists(profile.Id);
+            Paging<SimplePlaylist> playlists = _spotifyAPI.GetUserPlaylists(_profile.Id);
             List<SimplePlaylist> list = playlists.Items.ToList();
 
             while(playlists.Next != null)
             {
-                playlists = spotifyAPI.GetUserPlaylists(profile.Id, 20, playlists.Offset + playlists.Limit);
+                playlists = _spotifyAPI.GetUserPlaylists(_profile.Id, 20, playlists.Offset + playlists.Limit);
                 list.AddRange(playlists.Items);
             }
 
@@ -80,11 +80,11 @@ namespace Spotify_Local_Tagger
         public async void setProfilePic(PictureBox profilePicBox)
         {
 
-            if(profile.Images != null && profile.Images.Count > 0)
+            if(_profile.Images != null && _profile.Images.Count > 0)
             {
                 using (WebClient wc = new WebClient())
                 {
-                    byte[] imageBytes = await wc.DownloadDataTaskAsync(new Uri(profile.Images[0].Url));
+                    byte[] imageBytes = await wc.DownloadDataTaskAsync(new Uri(_profile.Images[0].Url));
                     using (MemoryStream stream = new MemoryStream(imageBytes))
                         profilePicBox.Image = System.Drawing.Image.FromStream(stream);
                 }
@@ -93,29 +93,29 @@ namespace Spotify_Local_Tagger
 
         public String getName()
         {
-            return profile.DisplayName;
+            return _profile.DisplayName;
         }
 
         public String getCountry()
         {
-            return profile.Country;
+            return _profile.Country;
         }
 
         public String getFollowers()
         {
-            return profile.Followers.Total.ToString();
+            return _profile.Followers.Total.ToString();
         }
 
         public int getNbPlaylists()
         {
-            return playlists.Count;
+            return _playlists.Count;
         }
 
         public List<String> getPlaylistsAsStrings()
         {
             List<String> thePlaylists = new List<string>();
 
-            foreach(SimplePlaylist playlist in playlists)
+            foreach(SimplePlaylist playlist in _playlists)
             {
                 thePlaylists.Add(playlist.Name);
             }
@@ -138,7 +138,7 @@ namespace Spotify_Local_Tagger
         {
             List<string> theSongsItems = new List<string>();
 
-            foreach(LocalSong song in localSongs)
+            foreach(LocalSong song in _localSongs)
             {
                 theSongsItems.Add(Path.GetFileName(song.getTrack().Name));
             }
@@ -150,7 +150,7 @@ namespace Spotify_Local_Tagger
         {
             List<ListViewItem> theSongsItems = new List<ListViewItem>();
 
-            mp3TrackSet.Clear();
+            _mp3TrackSet.Clear();
 
             List<String> pathsList = new List<string>();
 
@@ -162,11 +162,11 @@ namespace Spotify_Local_Tagger
                 TagLib.File file = TagLib.File.Create(path);
                 if(file != null)
                 {
-                    mp3TrackSet.Add(file);
+                    _mp3TrackSet.Add(file);
                 }
             }
 
-            foreach(TagLib.File file in mp3TrackSet)
+            foreach(TagLib.File file in _mp3TrackSet)
             {
                 ListViewItem theItem = new ListViewItem(new string[] { Path.GetFileName(file.Name) });
                 theItem.ImageIndex = 0;
@@ -180,7 +180,7 @@ namespace Spotify_Local_Tagger
         {
             List<string> theSongs = new List<string>();
 
-            foreach(SpotifySong song in spotifySongs)
+            foreach(SpotifySong song in _spotifySongs)
             {
                 theSongs.Add(song.getPerformers()[0] + " - " + song.getTitle());
             }
@@ -192,11 +192,11 @@ namespace Spotify_Local_Tagger
         {
             List<ListViewItem> theSongs = new List<ListViewItem>();
 
-            SimplePlaylist thePlaylist = playlists.ElementAt(playlistId);
+            SimplePlaylist thePlaylist = _playlists.ElementAt(playlistId);
 
-            spotifyTrackSet = new List<PlaylistTrack>();
+            _spotifyTrackSet = new List<PlaylistTrack>();
 
-            Paging<PlaylistTrack> tracks = spotifyAPI.GetPlaylistTracks(profile.Id, thePlaylist.Id);
+            Paging<PlaylistTrack> tracks = _spotifyAPI.GetPlaylistTracks(_profile.Id, thePlaylist.Id);
 
             //tracks.Items.ForEach(track => trackSet.Add(track));
 
@@ -206,7 +206,7 @@ namespace Spotify_Local_Tagger
 
                 while (true)
                 {
-                    Paging<PlaylistTrack> temp = spotifyAPI.GetPlaylistTracks(profile.Id, thePlaylist.Id, "", 100, i);
+                    Paging<PlaylistTrack> temp = _spotifyAPI.GetPlaylistTracks(_profile.Id, thePlaylist.Id, "", 100, i);
                     if (temp != null && temp.Items != null && temp.Items.Count > 0)
                     {
                         foreach (PlaylistTrack playTrack in temp.Items)
@@ -220,11 +220,11 @@ namespace Spotify_Local_Tagger
                 foreach (PlaylistTrack track in tracks.Items)
                 {
                     if (track != null)
-                        spotifyTrackSet.Add(track);
+                        _spotifyTrackSet.Add(track);
                 }
             }
 
-            foreach(PlaylistTrack track in spotifyTrackSet)
+            foreach(PlaylistTrack track in _spotifyTrackSet)
             {
                 ListViewItem theItem = new ListViewItem(new string[] { track.Track.Name, track.Track.Artists[0].Name, track.Track.Album.Name });
                 theItem.ImageIndex = 0;
@@ -237,14 +237,14 @@ namespace Spotify_Local_Tagger
         public void fillLocalSongs()
         {
 
-            localSongs.Clear();
+            _localSongs.Clear();
 
-            foreach(TagLib.File file in mp3TrackSet)
+            foreach(TagLib.File file in _mp3TrackSet)
             {
                 LocalSong song = new LocalSong(file);
                 if(song != null)
                 {
-                    localSongs.Add(song);
+                    _localSongs.Add(song);
                 }
             }
         }
@@ -252,34 +252,34 @@ namespace Spotify_Local_Tagger
         public void fillSpotifySongs()
         {
 
-            spotifySongs.Clear();
+            _spotifySongs.Clear();
 
             //TODO : Perform the operation in // ?
-            foreach(PlaylistTrack spotifyTrack in spotifyTrackSet)
+            foreach(PlaylistTrack spotifyTrack in _spotifyTrackSet)
             {
-                SpotifySong song = new SpotifySong(spotifyTrack, spotifyAPI);
+                SpotifySong song = new SpotifySong(spotifyTrack, _spotifyAPI);
                 if (song != null)
                 {
-                    spotifySongs.Add(song);
+                    _spotifySongs.Add(song);
                 }
             }
         }
 
         public void matchSongs()
         {
-            MergingFactory.process(localSongs, spotifySongs);
+            MergingFactory.process(_localSongs, _spotifySongs);
         }
 
         public void matchSongs(int idLocal, int idSpotify)
         {
-            MergingFactory.mergeTags(spotifySongs.ElementAt(idSpotify), localSongs.ElementAt(idLocal));
-            spotifySongs.RemoveAt(idSpotify);
-            localSongs.RemoveAt(idLocal);
+            MergingFactory.mergeTags(_spotifySongs.ElementAt(idSpotify), _localSongs.ElementAt(idLocal));
+            _spotifySongs.RemoveAt(idSpotify);
+            _localSongs.RemoveAt(idLocal);
         }
 
         public int getNbLocalSongs()
         {
-            return localSongs.Count;
+            return _localSongs.Count;
         }
     }
 }
