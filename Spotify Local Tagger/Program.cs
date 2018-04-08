@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace Spotify_Local_Tagger
 {
+    /// <summary>
+    /// Entry of the application.
+    /// </summary>
     static class Program
     {
         /// <summary>

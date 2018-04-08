@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace Spotify_Local_Tagger
 {
+    /// <summary>
+    /// Operations made on song lists while merging.
+    /// </summary>
     class MergingFactory
     {
 
+        /// <summary>
+        /// Do the matchs between the corresponding songs in the two lists and delete the matched songs.
+        /// </summary>
+        /// <param name="localSongs">The list of local songs.</param>
+        /// <param name="spotifySongs">The list of Spotify songs.</param>
         public static void process(List<LocalSong> localSongs, List<SpotifySong> spotifySongs)
         {
             if(localSongs != null && spotifySongs != null)
@@ -85,6 +93,12 @@ namespace Spotify_Local_Tagger
             }
         }
 
+        /// <summary>
+        /// Levenshtein distance between two strings.
+        /// </summary>
+        /// <param name="s1">The first string.</param>
+        /// <param name="s2">The second string.</param>
+        /// <returns>The Levenshtein distance between <c>s1</c> and <c>s2</c>.</returns>
         private static int levenshteinDistance(string s1, string s2)
         {
             //Console.WriteLine(s1 + " " + s2);
@@ -115,12 +129,12 @@ namespace Spotify_Local_Tagger
             return d[n, m];
         }
 
-        /**
-         * returns:
-         *  - 0: spotify song does not match the local song
-         *  - 1: spotify song does match the local song
-         *  - 2: spotify song has the same title than the local song
-         **/
+        /// <summary>
+        /// Compare the two songs by their elements.
+        /// </summary>
+        /// <param name="spotifySong">The Spotify song.</param>
+        /// <param name="localSong">The local song.</param>
+        /// <returns>0 if does not match, 1 if it matches, 2 if the localSong has only the valid title.</returns>
         private static int compareByElements(SpotifySong spotifySong, LocalSong localSong)
         {
 
@@ -200,6 +214,11 @@ namespace Spotify_Local_Tagger
             return 0;
         }
 
+        /// <summary>
+        /// Put the tags of the Spotify song in the local songs.
+        /// </summary>
+        /// <param name="spotifySong">The song from Spotify.</param>
+        /// <param name="localSong">The local song.</param>
         public static void mergeTags(SpotifySong spotifySong, LocalSong localSong)
         {
             //Retrieve taglib ref

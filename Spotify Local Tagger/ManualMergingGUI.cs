@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace Spotify_Local_Tagger
 {
     /// <summary>
-    /// Interaction between the user and the manual merging Form
+    /// Interaction between the user and the manual merging Form.
     /// </summary>
     public partial class ManualMergingGUI : Form
     {
@@ -36,7 +36,7 @@ namespace Spotify_Local_Tagger
         /// Initializes the basic components and populate the list views
         /// with unmatched songs.
         /// </summary>
-        /// <param name="_theUser"></param>
+        /// <param name="_theUser">The user instance.</param>
         public ManualMergingGUI(User theUser)
         {
             InitializeComponent();

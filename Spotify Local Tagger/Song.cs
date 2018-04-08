@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Spotify_Local_Tagger
 {
     /// <summary>
-    /// A general song for the local analyzer
+    /// A general song for the local analyzer.
     /// </summary>
     abstract class Song
     {
