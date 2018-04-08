@@ -10,7 +10,7 @@ namespace Spotify_Local_Tagger
     /// <summary>
     /// Specifies a local song.
     /// </summary>
-    class LocalSong : Song
+    public class LocalSong : Song
     {
         /// <summary>
         /// The instance of the track.

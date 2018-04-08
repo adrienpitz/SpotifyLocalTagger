@@ -9,7 +9,7 @@ namespace Spotify_Local_Tagger
     /// <summary>
     /// Operations made on song lists while merging.
     /// </summary>
-    class MergingFactory
+    public class MergingFactory
     {
 
         /// <summary>

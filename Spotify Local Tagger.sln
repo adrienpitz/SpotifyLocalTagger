@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify Local Tagger", "Spotify Local Tagger\Spotify Local Tagger.csproj", "{F7DC68CF-21CC-4C81-AD85-541F46C950FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyLocalAnalyser", "..\SpotifyLocalAnalyser\SpotifyLocalAnalyser\SpotifyLocalAnalyser.csproj", "{EEA39A52-7A8D-4B2A-9747-F5BD027C3692}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify Local Tagger Tests", "Spotify Local Tagger Tests\Spotify Local Tagger Tests.csproj", "{82F8D1C9-1A46-4F3A-91B7-8CB4938A7FDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +17,15 @@ Global
 		{F7DC68CF-21CC-4C81-AD85-541F46C950FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7DC68CF-21CC-4C81-AD85-541F46C950FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7DC68CF-21CC-4C81-AD85-541F46C950FF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEA39A52-7A8D-4B2A-9747-F5BD027C3692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEA39A52-7A8D-4B2A-9747-F5BD027C3692}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEA39A52-7A8D-4B2A-9747-F5BD027C3692}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEA39A52-7A8D-4B2A-9747-F5BD027C3692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F8D1C9-1A46-4F3A-91B7-8CB4938A7FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F8D1C9-1A46-4F3A-91B7-8CB4938A7FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F8D1C9-1A46-4F3A-91B7-8CB4938A7FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F8D1C9-1A46-4F3A-91B7-8CB4938A7FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC1BBA24-464C-4C02-87C8-B111FDBC53DB}
 	EndGlobalSection
 EndGlobal

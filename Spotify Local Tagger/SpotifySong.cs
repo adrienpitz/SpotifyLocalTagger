@@ -15,7 +15,7 @@ namespace Spotify_Local_Tagger
     /// <summary>
     /// Specifies a Spotify song.
     /// </summary>
-    class SpotifySong : Song
+    public class SpotifySong : Song
     {
         /// <summary>
         /// The album image.

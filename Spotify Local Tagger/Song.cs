@@ -10,7 +10,7 @@ namespace Spotify_Local_Tagger
     /// <summary>
     /// A general song for the local analyzer.
     /// </summary>
-    abstract class Song
+    public abstract class Song
     {
 
         /// <summary>
