@@ -245,6 +245,27 @@ namespace Spotify_Local_Tagger
 
         /// <summary>
         /// Triggers the synchronisation between the Spotify songs and the Local songs
+        /// in background of the UI thread
+        /// </summary>
+        /// <param name="sender">The button instance</param>
+        /// <param name="e">The event</param>
+        /// <remarks>
+        /// If all local songs did not have a match, a manual merging operation will
+        /// be triggered when the background thread will finish well.
+        /// </remarks>
+        private void synchronizeButton_ClickAlternative(object sender, EventArgs e)
+        {
+            playlistsListBox.Enabled = false;
+            spotifyMusicsListView.Enabled = false;
+            localListView.Enabled = false;
+            browseButton.Enabled = false;
+            folderTextBox.Enabled = false;
+
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// Triggers the synchronisation between the Spotify songs and the Local songs
         /// </summary>
         /// <param name="sender">The button instance</param>
         /// <param name="e">The event</param>
@@ -289,6 +310,68 @@ namespace Spotify_Local_Tagger
             browseButton.Enabled = true;
             folderTextBox.Enabled = true;
 
+        }
+
+        /// <summary>
+        /// Automatic merging operation done by the background thread.
+        /// </summary>
+        /// <param name="sender">The object sending the signal.</param>
+        /// <param name="e">The event.</param>
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            backgroundWorker.ReportProgress(10);
+
+            // Step 1: Retrieve all informations from Spotify
+            _theUser.fillSpotifySongs();
+            backgroundWorker.ReportProgress(20); //20% of the job has been made
+
+            _theUser.fillLocalSongs();
+            backgroundWorker.ReportProgress(30); //30% of the job has been made
+
+            // Step 2 : Matching and tagging
+            _theUser.matchSongs();
+            backgroundWorker.ReportProgress(100); //100% of the job has been made
+
+        }
+
+        /// <summary>
+        /// Updates the progress bar status when the worker finished one task.
+        /// </summary>
+        /// <param name="sender">The object sending the signal.</param>
+        /// <param name="e">The event.</param>
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
+        }
+
+        /// <summary>
+        /// Triggers the manual matching when the background thread completed his job and reactivate elements
+        /// of the GUI
+        /// </summary>
+        /// <param name="sender">The object sending the signal.</param>
+        /// <param name="e">The event.</param>
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if(e.Error != null)
+            {
+                this.showMessageBox("An error occured during the merging operation.");
+            }
+            else
+            {
+                // Open manual merging only if it both lists contains elements
+                if (_theUser.getNbLocalSongs() != 0 && _theUser.getNbSpotifySongs() != 0)
+                {
+                    Form manualMergingForm = new ManualMergingGUI(_theUser);
+                    manualMergingForm.Show();
+                }
+
+                playlistsListBox.Enabled = true;
+                spotifyMusicsListView.Enabled = true;
+                localListView.Enabled = true;
+                browseButton.Enabled = true;
+                folderTextBox.Enabled = true;
+            }
         }
     }
 }

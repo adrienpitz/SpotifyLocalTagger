@@ -29,16 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
-            this.credentialsLabel = new System.Windows.Forms.Label();
-            this.loginTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("");
             this.webPageLabel = new System.Windows.Forms.Label();
-            this.loginCredsButton = new System.Windows.Forms.Button();
             this.loginWebButton = new System.Windows.Forms.Button();
             this.logoImageBox = new System.Windows.Forms.PictureBox();
-            this.loginLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.synchronizeButton = new System.Windows.Forms.Button();
@@ -62,6 +56,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.profilePictureBox = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.logoImageBox)).BeginInit();
             this.loginPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -72,62 +67,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // credentialsLabel
-            // 
-            this.credentialsLabel.AutoSize = true;
-            this.credentialsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.credentialsLabel.Location = new System.Drawing.Point(398, 218);
-            this.credentialsLabel.Name = "credentialsLabel";
-            this.credentialsLabel.Size = new System.Drawing.Size(109, 13);
-            this.credentialsLabel.TabIndex = 0;
-            this.credentialsLabel.Text = "Login with credentials";
-            // 
-            // loginTextBox
-            // 
-            this.loginTextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.loginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.loginTextBox.Location = new System.Drawing.Point(473, 243);
-            this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(215, 20);
-            this.loginTextBox.TabIndex = 1;
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.passwordTextBox.Location = new System.Drawing.Point(473, 279);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(215, 20);
-            this.passwordTextBox.TabIndex = 2;
-            // 
             // webPageLabel
             // 
             this.webPageLabel.AutoSize = true;
             this.webPageLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.webPageLabel.Location = new System.Drawing.Point(398, 352);
+            this.webPageLabel.Location = new System.Drawing.Point(496, 271);
             this.webPageLabel.Name = "webPageLabel";
             this.webPageLabel.Size = new System.Drawing.Size(133, 13);
             this.webPageLabel.TabIndex = 3;
             this.webPageLabel.Text = "Login on Spotify web page";
             // 
-            // loginCredsButton
-            // 
-            this.loginCredsButton.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.loginCredsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginCredsButton.Location = new System.Drawing.Point(473, 315);
-            this.loginCredsButton.Name = "loginCredsButton";
-            this.loginCredsButton.Size = new System.Drawing.Size(215, 23);
-            this.loginCredsButton.TabIndex = 4;
-            this.loginCredsButton.Text = "Login";
-            this.loginCredsButton.UseVisualStyleBackColor = false;
-            this.loginCredsButton.Click += new System.EventHandler(this.loginCredsButton_Click);
-            // 
             // loginWebButton
             // 
             this.loginWebButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(242)))), ((int)(((byte)(156)))));
             this.loginWebButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginWebButton.Location = new System.Drawing.Point(473, 381);
+            this.loginWebButton.Location = new System.Drawing.Point(459, 294);
             this.loginWebButton.Name = "loginWebButton";
             this.loginWebButton.Size = new System.Drawing.Size(215, 23);
             this.loginWebButton.TabIndex = 5;
@@ -147,38 +101,12 @@
             this.logoImageBox.TabIndex = 6;
             this.logoImageBox.TabStop = false;
             // 
-            // loginLabel
-            // 
-            this.loginLabel.AutoSize = true;
-            this.loginLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.loginLabel.Location = new System.Drawing.Point(414, 243);
-            this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(33, 13);
-            this.loginLabel.TabIndex = 7;
-            this.loginLabel.Text = "Login";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(414, 286);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Password";
-            // 
             // loginPanel
             // 
             this.loginPanel.BackColor = System.Drawing.Color.Transparent;
             this.loginPanel.Controls.Add(this.logoImageBox);
-            this.loginPanel.Controls.Add(this.label1);
-            this.loginPanel.Controls.Add(this.credentialsLabel);
-            this.loginPanel.Controls.Add(this.loginLabel);
-            this.loginPanel.Controls.Add(this.loginTextBox);
-            this.loginPanel.Controls.Add(this.passwordTextBox);
             this.loginPanel.Controls.Add(this.loginWebButton);
             this.loginPanel.Controls.Add(this.webPageLabel);
-            this.loginPanel.Controls.Add(this.loginCredsButton);
             this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
             this.loginPanel.Name = "loginPanel";
@@ -208,14 +136,13 @@
             this.synchronizeButton.TabIndex = 14;
             this.synchronizeButton.Text = "Synchronize";
             this.synchronizeButton.UseVisualStyleBackColor = true;
-            this.synchronizeButton.Click += new System.EventHandler(this.synchronizeButton_Click);
+            this.synchronizeButton.Click += new System.EventHandler(this.synchronizeButton_ClickAlternative);
             // 
             // progressBar
             // 
             this.progressBar.BackColor = System.Drawing.Color.Yellow;
             this.progressBar.ForeColor = System.Drawing.Color.Lime;
             this.progressBar.Location = new System.Drawing.Point(3, 623);
-            this.progressBar.Maximum = 4;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(799, 23);
             this.progressBar.Step = 1;
@@ -299,7 +226,7 @@
             this.Album});
             this.spotifyMusicsListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.spotifyMusicsListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem5});
             this.spotifyMusicsListView.Location = new System.Drawing.Point(0, 40);
             this.spotifyMusicsListView.Name = "spotifyMusicsListView";
             this.spotifyMusicsListView.Size = new System.Drawing.Size(450, 317);
@@ -432,6 +359,13 @@
             this.profilePictureBox.TabIndex = 0;
             this.profilePictureBox.TabStop = false;
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,16 +398,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label credentialsLabel;
-        private System.Windows.Forms.TextBox loginTextBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label webPageLabel;
-        private System.Windows.Forms.Button loginCredsButton;
         private System.Windows.Forms.Button loginWebButton;
         private System.Windows.Forms.PictureBox logoImageBox;
-        private System.Windows.Forms.Label loginLabel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel loginPanel;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel panel3;
@@ -497,6 +424,7 @@
         private System.Windows.Forms.TextBox folderTextBox;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button synchronizeButton;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
 

@@ -402,10 +402,19 @@ namespace Spotify_Local_Tagger
         /// <summary>
         /// The number of local songs in the list.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The number of local songs in the list.</returns>
         public int getNbLocalSongs()
         {
             return _localSongs.Count;
+        }
+
+        /// <summary>
+        /// The number of Spotify songs in the list.
+        /// </summary>
+        /// <returns>The number of Spotify songs in the list.</returns>
+        public int getNbSpotifySongs()
+        {
+            return _spotifySongs.Count;
         }
     }
 }

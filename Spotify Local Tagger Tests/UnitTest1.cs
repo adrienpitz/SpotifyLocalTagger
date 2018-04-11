@@ -11,10 +11,6 @@ namespace Spotify_Local_Tagger_Tests
         public void TestMethod1()
         {
 
-        
-
-            LocalSong theSong = 
-
         }
     }
 }
