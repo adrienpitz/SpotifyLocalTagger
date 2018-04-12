@@ -22,10 +22,6 @@ namespace Spotify_Local_Tagger
         /// </summary>
         private SpotifyWebAPI _spotifyAPI;
         /// <summary>
-        /// Instance of the GUI.
-        /// </summary>
-        GUI _theGui;
-        /// <summary>
         /// All infos of the profile of the user.
         /// </summary>
         PrivateProfile _profile;
@@ -49,24 +45,10 @@ namespace Spotify_Local_Tagger
         /// List of instances of SpotifySong.
         /// </summary>
         List<SpotifySong> _spotifySongs;
-
         /// <summary>
-        /// Initialize all the lists and connects to Spotify
-        /// through the web.
+        /// Flag attesting if there was a problem during connexion.
         /// </summary>
-        /// <param name="gui">Instance of the GUI</param>
-        public User(GUI gui)
-        {
-            _theGui = gui;
-            connect();
-            _mp3TrackSet = new List<TagLib.File>();
-            _spotifyTrackSet = new List<PlaylistTrack>();
-            _localSongs = new List<LocalSong>();
-            _spotifySongs = new List<SpotifySong>();
-            while(_spotifyAPI == null) { }
-            initComponents();
-
-        }
+        bool problemDuringConnexionFlag;
 
         /// <summary>
         /// Initialize all the lists and connects to Spotify
@@ -74,12 +56,17 @@ namespace Spotify_Local_Tagger
         /// </summary>
         public User()
         {
+            problemDuringConnexionFlag = false;
             connect();
             _mp3TrackSet = new List<TagLib.File>();
             _spotifyTrackSet = new List<PlaylistTrack>();
             _localSongs = new List<LocalSong>();
             _spotifySongs = new List<SpotifySong>();
-            while (_spotifyAPI == null) { }
+            while (!isConnexionOK())
+            {
+                if (problemDuringConnexionFlag)
+                    break;
+            }
             initComponents();
         }
 
@@ -99,7 +86,11 @@ namespace Spotify_Local_Tagger
             }
             catch (Exception ex)
             {
-                _theGui.showMessageBox(ex.Message);
+                _spotifyAPI = null;
+                // Raise the flag
+                problemDuringConnexionFlag = true; 
+                Console.WriteLine("Connexion failed at some point.");
+                Console.WriteLine(ex.Message);
             }
         }
 

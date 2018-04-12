@@ -87,11 +87,11 @@ namespace Spotify_Local_Tagger
         private void loginWebButton_Click(object sender, EventArgs e)
         {
 
-            _theUser = new User(this);
+            _theUser = new User();
 
             if(!_theUser.isConnexionOK())
             {
-                MessageBox.Show("Retrieving informations failed");
+                MessageBox.Show("Retrieving informations failed.");
             }else
             {
                 Console.WriteLine("Successfull connexion");
